@@ -373,6 +373,9 @@
           <li class="nav-item">
             <a class="nav-link" href="#quiz">Auto-évaluation</a>
           </li>
+		  <li class="nav-item">
+            <a class="nav-link" href="quizIso42001.html">Quiz Complet</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -533,6 +536,270 @@
         </div>
       </div>
     </section>
+	
+	<!-- Ajouter cette section dans le HTML après la section "Introduction" -->
+<section id="domaines-cles" class="mb-5">
+  <h2 class="text-center mb-4">Les 12 domaines clés de l'ISO/IEC 42001</h2>
+  
+  <div class="row mb-4">
+    <div class="col-lg-10 mx-auto">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0"><i class="bi bi-diagram-3 me-2"></i>Structure complète de la norme</h5>
+        </div>
+        <div class="card-body">
+          <p>L'ISO/IEC 42001 couvre systématiquement 12 domaines essentiels pour une gestion responsable de l'IA :</p>
+          
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-3">
+            <!-- Domaine 1 -->
+            <div class="col">
+              <div class="card h-100 border-primary">
+                <div class="card-header bg-primary text-white">
+                  <h6 class="mb-0">1. Gouvernance de l'IA</h6>
+                </div>
+                <div class="card-body">
+                  <ul>
+                    <li>Structure de gouvernance</li>
+                    <li>Rôles et responsabilités</li>
+                    <li>Prise de décision éthique</li>
+                    <li>Comité de supervision</li>
+                  </ul>
+                  <button class="btn btn-sm btn-outline-primary mt-2" onclick="showDetails('domaine-gouvernance')">
+                    Voir les exigences
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Domaine 2 -->
+            <div class="col">
+              <div class="card h-100 border-primary">
+                <div class="card-header bg-primary text-white">
+                  <h6 class="mb-0">2. Cycle de vie de l'IA</h6>
+                </div>
+                <div class="card-body">
+                  <ul>
+                    <li>Conception et développement</li>
+                    <li>Déploiement et exploitation</li>
+                    <li>Maintenance et retrait</li>
+                    <li>Documentation</li>
+                  </ul>
+                  <button class="btn btn-sm btn-outline-primary mt-2" onclick="showDetails('domaine-cycle-vie')">
+                    Voir les exigences
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Domaine 3 -->
+            <div class="col">
+              <div class="card h-100 border-primary">
+                <div class="card-header bg-primary text-white">
+                  <h6 class="mb-0">3. Aspects éthiques</h6>
+                </div>
+                <div class="card-body">
+                  <ul>
+                    <li>Principes éthiques</li>
+                    <li>Évaluation d'impact</li>
+                    <li>Biais et équité</li>
+                    <li>Droits humains</li>
+                  </ul>
+                  <button class="btn btn-sm btn-outline-primary mt-2" onclick="showDetails('domaine-ethique')">
+                    Voir les exigences
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Domaine 4 -->
+            <div class="col">
+              <div class="card h-100 border-primary">
+                <div class="card-header bg-primary text-white">
+                  <h6 class="mb-0">4. Conformité réglementaire</h6>
+                </div>
+                <div class="card-body">
+                  <ul>
+                    <li>Cartographie des exigences</li>
+                    <li>Veille réglementaire</li>
+                    <li>Processus de conformité</li>
+                    <li>Documentation probante</li>
+                  </ul>
+                  <button class="btn btn-sm btn-outline-primary mt-2" onclick="showDetails('domaine-conformite')">
+                    Voir les exigences
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Domaine 5 -->
+            <div class="col">
+              <div class="card h-100 border-primary">
+                <div class="card-header bg-primary text-white">
+                  <h6 class="mb-0">5. Gestion des risques</h6>
+                </div>
+                <div class="card-body">
+                  <ul>
+                    <li>Identification des risques</li>
+                    <li>Évaluation et priorisation</li>
+                    <li>Contrôles d'atténuation</li>
+                    <li>Surveillance continue</li>
+                  </ul>
+                  <button class="btn btn-sm btn-outline-primary mt-2" onclick="showDetails('domaine-risques')">
+                    Voir les exigences
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Domaine 6 -->
+            <div class="col">
+              <div class="card h-100 border-primary">
+                <div class="card-header bg-primary text-white">
+                  <h6 class="mb-0">6. Sécurité des données</h6>
+                </div>
+                <div class="card-body">
+                  <ul>
+                    <li>Protection des données</li>
+                    <li>Confidentialité</li>
+                    <li>Intégrité</li>
+                    <li>Disponibilité</li>
+                  </ul>
+                  <button class="btn btn-sm btn-outline-primary mt-2" onclick="showDetails('domaine-securite')">
+                    Voir les exigences
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Domaine 7 -->
+            <div class="col">
+              <div class="card h-100 border-primary">
+                <div class="card-header bg-primary text-white">
+                  <h6 class="mb-0">7. Transparence</h6>
+                </div>
+                <div class="card-body">
+                  <ul>
+                    <li>Explicabilité</li>
+                    <li>Documentation</li>
+                    <li>Communication</li>
+                    <li>Droit à l'information</li>
+                  </ul>
+                  <button class="btn btn-sm btn-outline-primary mt-2" onclick="showDetails('domaine-transparence')">
+                    Voir les exigences
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Domaine 8 -->
+            <div class="col">
+              <div class="card h-100 border-primary">
+                <div class="card-header bg-primary text-white">
+                  <h6 class="mb-0">8. Surveillance continue</h6>
+                </div>
+                <div class="card-body">
+                  <ul>
+                    <li>Indicateurs de performance</li>
+                    <li>Audits internes</li>
+                    <li>Revue de direction</li>
+                    <li>Amélioration continue</li>
+                  </ul>
+                  <button class="btn btn-sm btn-outline-primary mt-2" onclick="showDetails('domaine-surveillance')">
+                    Voir les exigences
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Domaine 9 -->
+            <div class="col">
+              <div class="card h-100 border-primary">
+                <div class="card-header bg-primary text-white">
+                  <h6 class="mb-0">9. Compétences et sensibilisation</h6>
+                </div>
+                <div class="card-body">
+                  <ul>
+                    <li>Formation du personnel</li>
+                    <li>Conscience éthique</li>
+                    <li>Compétences techniques</li>
+                    <li>Culture organisationnelle</li>
+                  </ul>
+                  <button class="btn btn-sm btn-outline-primary mt-2" onclick="showDetails('domaine-competences')">
+                    Voir les exigences
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Domaine 10 -->
+            <div class="col">
+              <div class="card h-100 border-primary">
+                <div class="card-header bg-primary text-white">
+                  <h6 class="mb-0">10. Gestion des parties prenantes</h6>
+                </div>
+                <div class="card-body">
+                  <ul>
+                    <li>Identification</li>
+                    <li>Engagement</li>
+                    <li>Communication</li>
+                    <li>Gestion des attentes</li>
+                  </ul>
+                  <button class="btn btn-sm btn-outline-primary mt-2" onclick="showDetails('domaine-parties-prenantes')">
+                    Voir les exigences
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Domaine 11 -->
+            <div class="col">
+              <div class="card h-100 border-primary">
+                <div class="card-header bg-primary text-white">
+                  <h6 class="mb-0">11. Gestion des incidents</h6>
+                </div>
+                <div class="card-body">
+                  <ul>
+                    <li>Détection</li>
+                    <li>Réponse</li>
+                    <li>Analyse</li>
+                    <li>Amélioration</li>
+                  </ul>
+                  <button class="btn btn-sm btn-outline-primary mt-2" onclick="showDetails('domaine-incidents')">
+                    Voir les exigences
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Domaine 12 -->
+            <div class="col">
+              <div class="card h-100 border-primary">
+                <div class="card-header bg-primary text-white">
+                  <h6 class="mb-0">12. Amélioration continue</h6>
+                </div>
+                <div class="card-body">
+                  <ul>
+                    <li>Revue du SMIA</li>
+                    <li>Actions correctives</li>
+                    <li>Benchmarking</li>
+                    <li>Innovation</li>
+                  </ul>
+                  <button class="btn btn-sm btn-outline-primary mt-2" onclick="showDetails('domaine-amelioration')">
+                    Voir les exigences
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert alert-info mt-4">
+            <p><strong>Approche intégrée :</strong> Ces 12 domaines sont interconnectés et doivent être considérés dans leur ensemble pour une implémentation efficace du SMIA.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
     <section id="norme" class="mb-5">
       <h2 class="text-center mb-4">Détails de la norme ISO/IEC 42001</h2>
@@ -1148,66 +1415,1047 @@
     // Quiz variables
     let currentQuestion = 0;
     let score = 0;
+
     const questions = [
-      {
-        question: "Quel est l'objectif principal de l'ISO/IEC 42001 ?",
-        options: [
-          "Standardiser les algorithmes d'IA",
-          "Fournir un cadre pour la gestion des systèmes d'IA",
-          "Certifier l'exactitude des prédictions des modèles IA",
-          "Remplacer les régulations nationales sur l'IA"
-        ],
-        answer: 1,
-        explanation: "L'ISO/IEC 42001 fournit un cadre pour établir, implémenter, maintenir et améliorer un système de management de l'IA (SMIA) dans les organisations."
-      },
-      {
-        question: "Quelle est la durée typique de validité d'une certification ISO/IEC 42001 ?",
-        options: [
-          "1 an",
-          "2 ans",
-          "3 ans",
-          "5 ans"
-        ],
-        answer: 2,
-        explanation: "Comme pour les autres normes ISO, la certification est valide 3 ans, avec des audits de surveillance annuels."
-      },
-      {
-        question: "Quel élément suivant n'est PAS une exigence clé de l'ISO/IEC 42001 ?",
-        options: [
-          "Politique IA documentée",
-          "Évaluation des risques spécifiques à l'IA",
-          "Utilisation exclusive de modèles d'IA explicables",
-          "Processus d'amélioration continue"
-        ],
-        answer: 2,
-        explanation: "La norme n'impose pas l'utilisation exclusive de modèles explicables, mais elle exige des mesures pour gérer les risques liés au manque d'explicabilité."
-      },
-      {
-        question: "Quelle norme complémentaire traite spécifiquement de la gestion des risques en IA ?",
-        options: [
-          "ISO/IEC 23053",
-          "ISO/IEC 23894",
-          "ISO/IEC 38507",
-          "ISO 31000"
-        ],
-        answer: 1,
-        explanation: "L'ISO/IEC 23894 fournit des lignes directrices pour la gestion des risques spécifiques aux systèmes d'IA."
-      },
-      {
-        question: "Quelle est la première étape du processus de certification ?",
-        options: [
-          "Audit de certification",
-          "Analyse des écarts",
-          "Implémentation complète du SMIA",
-          "Choix de l'organisme certificateur"
-        ],
-        answer: 1,
-        explanation: "L'analyse des écarts permet d'évaluer la situation actuelle par rapport aux exigences de la norme et de planifier les actions nécessaires."
-      }
-    ];
+  {
+    question: "Quel est l'objectif principal de l'ISO/IEC 42001 ?",
+    options: [
+      "Standardiser les algorithmes d'IA",
+      "Fournir un cadre pour la gestion des systèmes d'IA",
+      "Certifier l'exactitude des prédictions des modèles IA",
+      "Remplacer les régulations nationales sur l'IA"
+    ],
+    answer: 1,
+    explanation: "L'ISO/IEC 42001 fournit un cadre pour établir, implémenter, maintenir et améliorer un système de management de l'IA (SMIA) dans les organisations."
+  },
+  {
+    question: "Quelle est la durée typique de validité d'une certification ISO/IEC 42001 ?",
+    options: [
+      "1 an",
+      "2 ans",
+      "3 ans",
+      "5 ans"
+    ],
+    answer: 2,
+    explanation: "Comme pour les autres normes ISO, la certification est valide 3 ans, avec des audits de surveillance annuels."
+  },
+  {
+    question: "Quel élément suivant n'est PAS une exigence clé de l'ISO/IEC 42001 ?",
+    options: [
+      "Politique IA documentée",
+      "Évaluation des risques spécifiques à l'IA",
+      "Utilisation exclusive de modèles d'IA explicables",
+      "Processus d'amélioration continue"
+    ],
+    answer: 2,
+    explanation: "La norme n'impose pas l'utilisation exclusive de modèles explicables, mais elle exige des mesures pour gérer les risques liés au manque d'explicabilité."
+  },
+  {
+    question: "Quelle norme complémentaire traite spécifiquement de la gestion des risques en IA ?",
+    options: [
+      "ISO/IEC 23053",
+      "ISO/IEC 23894",
+      "ISO/IEC 38507",
+      "ISO 31000"
+    ],
+    answer: 1,
+    explanation: "L'ISO/IEC 23894 fournit des lignes directrices pour la gestion des risques spécifiques aux systèmes d'IA."
+  },
+  {
+    question: "Quelle est la première étape du processus de certification ?",
+    options: [
+      "Audit de certification",
+      "Analyse des écarts",
+      "Implémentation complète du SMIA",
+      "Choix de l'organisme certificateur"
+    ],
+    answer: 1,
+    explanation: "L'analyse des écarts permet d'évaluer la situation actuelle par rapport aux exigences de la norme et de planifier les actions nécessaires."
+  },
+  {
+    question: "Quel type d'organisation peut bénéficier de l'ISO/IEC 42001 ?",
+    options: [
+      "Uniquement les entreprises technologiques",
+      "Uniquement les développeurs d'IA",
+      "Toute organisation utilisant ou fournissant des systèmes d'IA",
+      "Uniquement les organismes gouvernementaux"
+    ],
+    answer: 2,
+    explanation: "La norme s'applique à tout type d'organisation, quelle que soit sa taille ou son secteur, qui utilise ou fournit des systèmes d'IA."
+  },
+  {
+    question: "Quel est le principal avantage de la certification ISO/IEC 42001 ?",
+    options: [
+      "Garantie de performance des modèles d'IA",
+      "Réduction des coûts de développement",
+      "Démontrer une gestion responsable de l'IA",
+      "Automatisation des processus métiers"
+    ],
+    answer: 2,
+    explanation: "La certification permet de démontrer aux parties prenantes que l'organisation gère ses systèmes d'IA de manière responsable et conforme aux meilleures pratiques."
+  },
+  {
+    question: "Quel concept est au cœur de l'ISO/IEC 42001 ?",
+    options: [
+      "Le cycle PDCA (Plan-Do-Check-Act)",
+      "Le deep learning",
+      "L'analyse prédictive",
+      "Les réseaux de neurones"
+    ],
+    answer: 0,
+    explanation: "Comme pour les autres normes ISO de systèmes de management, l'ISO/IEC 42001 s'appuie sur l'approche PDCA pour une amélioration continue."
+  },
+  {
+    question: "Quelle est la différence clé entre l'ISO/IEC 42001 et l'UE AI Act ?",
+    options: [
+      "L'ISO 42001 est obligatoire tandis que l'UE AI Act est volontaire",
+      "L'UE AI Act est une régulation légale, l'ISO 42001 un cadre volontaire",
+      "Ils traitent de sujets complètement différents",
+      "Il n'y a pas de différence significative"
+    ],
+    answer: 1,
+    explanation: "L'UE AI Act est une régulation contraignante pour les États membres de l'UE, tandis que l'ISO/IEC 42001 est un cadre volontaire de management."
+  },
+  {
+    question: "Quel document doit être établi pour démontrer la conformité à l'ISO/IEC 42001 ?",
+    options: [
+      "Un manuel de management de l'IA",
+      "Un registre des algorithmes utilisés",
+      "Un certificat de performance des modèles",
+      "Une déclaration de confidentialité"
+    ],
+    answer: 0,
+    explanation: "Un manuel de management de l'IA documente le système mis en place et démontre comment l'organisation répond aux exigences de la norme."
+  },
+  {
+    question: "Qui dans l'organisation doit être impliqué dans le SMIA selon l'ISO/IEC 42001 ?",
+    options: [
+      "Uniquement l'équipe technique",
+      "Uniquement la direction",
+      "Tous les niveaux hiérarchiques",
+      "Uniquement le département juridique"
+    ],
+    answer: 2,
+    explanation: "La norme requiert un engagement à tous les niveaux de l'organisation, avec un rôle particulier pour la direction qui doit démontrer son leadership."
+  },
+  {
+    question: "Quel aspect suivant est couvert par l'ISO/IEC 42001 ?",
+    options: [
+      "Détails techniques des algorithmes d'IA",
+      "Impacts sociétaux des systèmes d'IA",
+      "Gouvernance des données d'entraînement",
+      "Tous les aspects ci-dessus"
+    ],
+    answer: 3,
+    explanation: "La norme adopte une approche holistique couvrant les aspects techniques, organisationnels, éthiques et de gouvernance des systèmes d'IA."
+  },
+  {
+    question: "Combien de domaines clés l'ISO/IEC 42001 couvre-t-elle ?",
+    options: [
+      "4 domaines",
+      "8 domaines",
+      "12 domaines",
+      "18 domaines"
+    ],
+    answer: 2,
+    explanation: "La norme couvre 12 domaines clés dont la gouvernance, le cycle de vie des systèmes d'IA, les aspects éthiques et la conformité réglementaire."
+  },
+  {
+    question: "Quelle est la relation entre l'ISO/IEC 42001 et l'ISO 9001 ?",
+    options: [
+      "Elles sont identiques",
+      "L'ISO 9001 remplace l'ISO/IEC 42001",
+      "L'ISO/IEC 42001 peut être intégrée avec un système de management qualité ISO 9001",
+      "Elles sont totalement incompatibles"
+    ],
+    answer: 2,
+    explanation: "L'ISO/IEC 42001 suit la même structure de haut niveau (HLS) que l'ISO 9001, permettant une intégration aisée avec les systèmes de management existants."
+  },
+  {
+    question: "Quel est le facteur clé pour maintenir la certification ISO/IEC 42001 ?",
+    options: [
+      "Maintenir une précision constante des modèles",
+      "Effectuer des audits internes réguliers",
+      "Mettre à jour quotidiennement les algorithmes",
+      "Publier des articles de recherche"
+    ],
+    answer: 1,
+    explanation: "Des audits internes réguliers sont essentiels pour vérifier la conformité continue et identifier les opportunités d'amélioration du SMIA."
+  },
+  {
+    question: "Quelle notion est particulièrement importante dans l'ISO/IEC 42001 pour les systèmes d'IA ?",
+    options: [
+      "La transparence",
+      "La vitesse d'exécution",
+      "La complexité des modèles",
+      "Le nombre de paramètres"
+    ],
+    answer: 0,
+    explanation: "La transparence (ou explicabilité) est un principe clé de la norme, notamment pour les systèmes d'IA à haut risque ou ayant un impact significatif."
+  },
+  {
+    question: "Quand l'ISO/IEC 42001 a-t-elle été publiée ?",
+    options: [
+      "2018",
+      "2020",
+      "2022",
+      "2023"
+    ],
+    answer: 3,
+    explanation: "L'ISO/IEC 42001 a été publiée en décembre 2023 après plusieurs années de développement par des experts internationaux."
+  },
+  {
+    question: "Quel type d'audit n'est PAS requis pour l'ISO/IEC 42001 ?",
+    options: [
+      "Audit interne",
+      "Audit de surveillance",
+      "Audit de certification",
+      "Audit des performances des modèles"
+    ],
+    answer: 3,
+    explanation: "La norme ne requiert pas d'audit spécifique des performances des modèles (qui relève plutôt des pratiques techniques), mais se concentre sur les processus de management."
+  },
+  {
+    question: "Quelle partie prenante est principalement concernée par l'ISO/IEC 42001 ?",
+    options: [
+      "Les clients finaux uniquement",
+      "Les fournisseurs uniquement",
+      "Toutes les parties prenantes concernées par les systèmes d'IA",
+      "Les organismes de régulation uniquement"
+    ],
+    answer: 2,
+    explanation: "La norme prend en compte les besoins et attentes de toutes les parties prenantes concernées par les systèmes d'IA de l'organisation."
+  },
+  {
+    question: "Quel est le temps moyen estimé pour implémenter l'ISO/IEC 42001 dans une organisation ?",
+    options: [
+      "1-3 mois",
+      "6-12 mois",
+      "2-3 ans",
+      "Plus de 5 ans"
+    ],
+    answer: 1,
+    explanation: "Selon la taille et la complexité de l'organisation, l'implémentation prend généralement entre 6 et 12 mois avant d'être prête pour la certification."
+  },
+  {
+    question: "Quel document suivant est requis par l'ISO/IEC 42001 ?",
+    options: [
+      "Une politique de management de l'IA",
+      "Un registre des risques spécifiques à l'IA",
+      "Des objectifs mesurables pour le SMIA",
+      "Tous les documents ci-dessus"
+    ],
+    answer: 3,
+    explanation: "La norme exige ces trois éléments comme documentation minimale pour démontrer la conformité du système de management de l'IA."
+  },
+  {
+    question: "Quelle compétence est essentielle pour l'équipe en charge du SMIA ?",
+    options: [
+      "Compétences techniques en IA uniquement",
+      "Compétences en management uniquement",
+      "Compétences techniques ET en management",
+      "Compétences en marketing digital"
+    ],
+    answer: 2,
+    explanation: "L'équipe doit combiner une compréhension des enjeux techniques de l'IA et des compétences en management système pour une implémentation efficace."
+  },
+  {
+    question: "Quelle est la première responsabilité de la direction selon l'ISO/IEC 42001 ?",
+    options: [
+      "Développer des modèles d'IA",
+      "Établir et promouvoir la politique IA",
+      "Effectuer des tests de performance",
+      "Former tous les employés au codage"
+    ],
+    answer: 1,
+    explanation: "La direction doit démontrer son engagement en établissant une politique IA alignée avec la stratégie globale de l'organisation et en la communiquant."
+  },
+  {
+    question: "Quel est l'avantage de l'ISO/IEC 42001 pour les petites entreprises ?",
+    options: [
+      "Accès à des algorithmes exclusifs",
+      "Différenciation sur le marché",
+      "Exemption des régulations",
+      "Financement automatique"
+    ],
+    answer: 1,
+    explanation: "La certification permet aux petites entreprises de se différencier en démontrant leur engagement dans une gestion responsable et conforme de l'IA."
+  },
+  {
+    question: "Quel principe éthique est explicitement mentionné dans l'ISO/IEC 42001 ?",
+    options: [
+      "Équité",
+      "Créativité",
+      "Rentabilité",
+      "Popularité"
+    ],
+    answer: 0,
+    explanation: "Le principe d'équité (fairness) est un des principes éthiques clés que la norme encourage les organisations à prendre en compte dans leurs systèmes d'IA."
+  }
+];
 
     // Contenu détaillé pour chaque section
     const contentDatabase = {
+	
+	  'domaine-gouvernance': {
+        title: '1. Gouvernance de l\'IA',
+        content: `
+            <h5>Exigences clés de la gouvernance IA</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="card-header bg-primary text-white">
+                            <h6>Structure organisationnelle</h6>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Désignation d'un responsable SMIA</li>
+                                <li>Comité de gouvernance multidisciplinaire</li>
+                                <li>Clarté des rôles et responsabilités</li>
+                                <li>Mécanismes de reporting</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="card-header bg-primary text-white">
+                            <h6>Processus décisionnels</h6>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Cadre pour les décisions éthiques</li>
+                                <li>Processus d'escalade</li>
+                                <li>Documentation des décisions</li>
+                                <li>Gestion des conflits d'intérêt</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="mt-3">Checklist de mise en œuvre</h5>
+            <ol>
+                <li>Élaborer une charte de gouvernance</li>
+                <li>Définir la structure de supervision</li>
+                <li>Établir des procédures décisionnelles</li>
+                <li>Mettre en place des indicateurs de performance</li>
+            </ol>
+
+            <div class="alert alert-success mt-3">
+                <p><strong>Bonnes pratiques :</strong> Inclure des membres externes dans le comité de gouvernance pour une perspective indépendante.</p>
+            </div>
+        `
+    },
+
+    'domaine-cycle-vie': {
+        title: '2. Cycle de vie des systèmes IA',
+        content: `
+            <h5>Gestion du cycle de vie selon ISO/IEC 42001</h5>
+            <div class="process-step">
+                <h6>Phase de conception</h6>
+                <ul>
+                    <li>Spécification des exigences</li>
+                    <li>Évaluation des risques initiaux</li>
+                    <li>Choix des architectures</li>
+                </ul>
+            </div>
+            <div class="process-step">
+                <h6>Phase de développement</h6>
+                <ul>
+                    <li>Gestion des données d'entraînement</li>
+                    <li>Validation des modèles</li>
+                    <li>Documentation technique</li>
+                </ul>
+            </div>
+            <div class="process-step">
+                <h6>Phase de déploiement</h6>
+                <ul>
+                    <li>Tests d'intégration</li>
+                    <li>Formation des utilisateurs</li>
+                    <li>Surveillance initiale</li>
+                </ul>
+            </div>
+            <div class="process-step">
+                <h6>Phase d'exploitation</h6>
+                <ul>
+                    <li>Maintenance prédictive</li>
+                    <li>Mises à jour des modèles</li>
+                    <li>Gestion des versions</li>
+                </ul>
+            </div>
+            <div class="process-step">
+                <h6>Phase de retrait</h6>
+                <ul>
+                    <li>Plan de désaffectation</li>
+                    <li>Migration des données</li>
+                    <li>Évaluation post-mortem</li>
+                </ul>
+            </div>
+
+            <div class="alert alert-info mt-3">
+                <p><strong>Intégration :</strong> Ce cycle doit être aligné avec les processus existants de gestion de projet et de développement logiciel.</p>
+            </div>
+        `
+    },
+	
+	    'domaine-conformite': {
+        title: '4. Conformité réglementaire',
+        content: `
+            <h5>Gestion de la conformité selon ISO/IEC 42001</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="card-header bg-primary text-white">
+                            <h6>Cadre réglementaire</h6>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li>AI Act (Règlement européen)</li>
+                                <li>RGPD (Protection des données)</li>
+                                <li>Directives sectorielles</li>
+                                <li>Lois nationales spécifiques</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="card-header bg-primary text-white">
+                            <h6>Processus de conformité</h6>
+                        </div>
+                        <div class="card-body">
+                            <ol>
+                                <li>Cartographie des exigences</li>
+                                <li>Analyse des écarts</li>
+                                <li>Plan d'action correctif</li>
+                                <li>Documentation probante</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="mt-3">Matrice de conformité type</h5>
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>Exigence</th>
+                        <th>Référence</th>
+                        <th>Statut</th>
+                        <th>Preuve</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Transparence algorithmique</td>
+                        <td>AI Act Art. 13</td>
+                        <td>Conforme</td>
+                        <td>Fiche technique v2.3</td>
+                    </tr>
+                    <tr>
+                        <td>Gestion des biais</td>
+                        <td>ISO/IEC 42001 §6.3</td>
+                        <td>En progression</td>
+                        <td>Rapport d'audit interne</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="alert alert-info mt-3">
+                <p><strong>Outils recommandés :</strong> Logiciels de veille réglementaire, matrices de conformité, registres documentaires.</p>
+            </div>
+        `
+    },
+
+    'domaine-risques': {
+        title: '5. Gestion des risques IA',
+        content: `
+            <h5>Approche spécifique aux risques IA</h5>
+            <div class="process-step">
+                <h6>Identification</h6>
+                <ul>
+                    <li>Biais algorithmiques</li>
+                    <li>Erreurs de prédiction</li>
+                    <li>Fuites de données</li>
+                    <li>Impacts sociétaux</li>
+                </ul>
+            </div>
+            <div class="process-step">
+                <h6>Analyse</h6>
+                <ul>
+                    <li>Probabilité d'occurrence</li>
+                    <li>Impact potentiel</li>
+                    <li>Vulnérabilités techniques</li>
+                </ul>
+            </div>
+            <div class="process-step">
+                <h6>Traitement</h6>
+                <ul>
+                    <li>Contrôles techniques</li>
+                    <li>Safeguards organisationnels</li>
+                    <li>Plan de continuité</li>
+                </ul>
+            </div>
+            <div class="process-step">
+                <h6>Surveillance</h6>
+                <ul>
+                    <li>Indicateurs clés</li>
+                    <li>Revues périodiques</li>
+                    <li>Mises à jour du registre</li>
+                </ul>
+            </div>
+
+            <h5 class="mt-3">Exemple de registre des risques</h5>
+            <div class="table-responsive">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>Risque</th>
+                            <th>Impact</th>
+                            <th>Probabilité</th>
+                            <th>Contrôles</th>
+                            <th>Responsable</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Biais racial dans le scoring</td>
+                            <td>Élevé</td>
+                            <td>Moyenne</td>
+                            <td>Tests de fairness, diversité données</td>
+                            <td>Responsable ML</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        `
+    },
+
+    'domaine-securite': {
+        title: '6. Sécurité des données',
+        content: `
+            <h5>Politique de sécurité des données IA</h5>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-3">
+                        <div class="card-header bg-primary text-white">
+                            <h6>Confidentialité</h6>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Chiffrement</li>
+                                <li>Contrôles d'accès</li>
+                                <li>Pseudonymisation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-3">
+                        <div class="card-header bg-primary text-white">
+                            <h6>Intégrité</h6>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Validation des données</li>
+                                <li>Protection contre les attaques</li>
+                                <li>Journalisation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-3">
+                        <div class="card-header bg-primary text-white">
+                            <h6>Disponibilité</h6>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Backups</li>
+                                <li>Réplication</li>
+                                <li>Plan de reprise</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="mt-3">Checklist sécurité</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <ul>
+                        <li>Évaluation des tiers (fournisseurs cloud)</li>
+                        <li>Tests d'intrusion réguliers</li>
+                        <li>Formation sécurité du personnel</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul>
+                        <li>Mise à jour des correctifs</li>
+                        <li>Surveillance des accès</li>
+                        <li>Plan de réponse aux incidents</li>
+                    </ul>
+                </div>
+            </div>
+        `
+    },
+
+    'domaine-transparence': {
+        title: '7. Transparence des systèmes IA',
+        content: `
+            <h5>Exigences de transparence</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="card-header bg-primary text-white">
+                            <h6>Documentation</h6>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Fiche technique du système</li>
+                                <li>Description des données</li>
+                                <li>Limitations connues</li>
+                                <li>Journal des décisions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="card-header bg-primary text-white">
+                            <h6>Communication</h6>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Notice utilisateur</li>
+                                <li>Mécanismes d'explication</li>
+                                <li>Channel de questions</li>
+                                <li>Dashboard de monitoring</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="mt-3">Niveaux d'explication</h5>
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>Public</th>
+                        <th>Niveau d'explication</th>
+                        <th>Format</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Utilisateurs finaux</td>
+                        <td>Simple et intuitif</td>
+                        <td>Interface utilisateur</td>
+                    </tr>
+                    <tr>
+                        <td>Régulateurs</td>
+                        <td>Technique et complet</td>
+                        <td>Documentation technique</td>
+                    </tr>
+                </tbody>
+            </table>
+        `
+    },
+
+    'domaine-surveillance': {
+        title: '8. Surveillance continue',
+        content: `
+            <h5>Programme de surveillance du SMIA</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="card-header bg-primary text-white">
+                            <h6>Indicateurs clés</h6>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Performance des modèles</li>
+                                <li>Incidents de sécurité</li>
+                                <li>Plaintes utilisateurs</li>
+                                <li>Temps de réponse</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="card-header bg-primary text-white">
+                            <h6>Mécanismes</h6>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Audits internes</li>
+                                <li>Revues de direction</li>
+                                <li>Benchmarking</li>
+                                <li>Feedback utilisateurs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="mt-3">Tableau de bord type</h5>
+            <img src="https://via.placeholder.com/800x400?text=Exemple+Dashboard+Surveillance" class="img-fluid mb-3">
+
+            <div class="alert alert-info">
+                <p><strong>Fréquence :</strong> Les indicateurs critiques doivent être monitorés en temps réel, les autres au moins trimestriellement.</p>
+            </div>
+        `
+    },
+
+    'domaine-competences': {
+        title: '9. Compétences et sensibilisation',
+        content: `
+            <h5>Programme de développement des compétences</h5>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-3">
+                        <div class="card-header bg-primary text-white">
+                            <h6>Formation technique</h6>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Développement responsable</li>
+                                <li>Tests de biais</li>
+                                <li>Sécurité des modèles</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-3">
+                        <div class="card-header bg-primary text-white">
+                            <h6>Formation éthique</h6>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Principes éthiques</li>
+                                <li>Cas pratiques</li>
+                                <li>Réglementation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-3">
+                        <div class="card-header bg-primary text-white">
+                            <h6>Sensibilisation</h6>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Campagnes internes</li>
+                                <li>Newsletters</li>
+                                <li>Ateliers</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="mt-3">Matrice des compétences</h5>
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>Rôle</th>
+                        <th>Compétences requises</th>
+                        <th>Niveau</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Data Scientist</td>
+                        <td>Détection des biais</td>
+                        <td>Avancé</td>
+                    </tr>
+                    <tr>
+                        <td>Responsable produit</td>
+                        <td>Éthique appliquée</td>
+                        <td>Intermédiaire</td>
+                    </tr>
+                </tbody>
+            </table>
+        `
+    },
+
+    'domaine-parties-prenantes': {
+        title: '10. Gestion des parties prenantes',
+        content: `
+            <h5>Stratégie d'engagement des parties prenantes</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="card-header bg-primary text-white">
+                            <h6>Identification</h6>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Cartographie complète</li>
+                                <li>Analyse d'intérêt/influence</li>
+                                <li>Attentes et préoccupations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="card-header bg-primary text-white">
+                            <h6>Engagement</h6>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Plan de communication</li>
+                                <li>Mécanismes de consultation</li>
+                                <li>Processus de feedback</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="mt-3">Catégories de parties prenantes</h5>
+            <div class="row">
+                <div class="col-md-3">
+                    <h6>Interne</h6>
+                    <ul>
+                        <li>Direction</li>
+                        <li>Équipes techniques</li>
+                        <li>Comité éthique</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6>Externe</h6>
+                    <ul>
+                        <li>Régulateurs</li>
+                        <li>Clients</li>
+                        <li>Fournisseurs</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6>Sociétal</h6>
+                    <ul>
+                        <li>Communautés impactées</li>
+                        <li>ONG</li>
+                        <li>Médias</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6>Technique</h6>
+                    <ul>
+                        <li>Organismes de standardisation</li>
+                        <li>Communautés open source</li>
+                        <li>Universités</li>
+                    </ul>
+                </div>
+            </div>
+        `
+    },
+
+    'domaine-incidents': {
+        title: '11. Gestion des incidents IA',
+        content: `
+            <h5>Processus de gestion des incidents</h5>
+            <div class="process-step">
+                <h6>1. Préparation</h6>
+                <ul>
+                    <li>Classification des incidents</li>
+                    <li>Procédures documentées</li>
+                    <li>Équipe dédiée</li>
+                </ul>
+            </div>
+            <div class="process-step">
+                <h6>2. Détection</h6>
+                <ul>
+                    <li>Monitoring continu</li>
+                    <li>Alertes configurables</li>
+                    <li>Signalement utilisateur</li>
+                </ul>
+            </div>
+            <div class="process-step">
+                <h6>3. Réponse</h6>
+                <ul>
+                    <li>Contenement</li>
+                    <li>Communication</li>
+                    <li>Documentation</li>
+                </ul>
+            </div>
+            <div class="process-step">
+                <h6>4. Post-mortem</h6>
+                <ul>
+                    <li>Analyse racine</li>
+                    <li>Actions correctives</li>
+                    <li>Améliorations</li>
+                </ul>
+            </div>
+
+            <h5 class="mt-3">Exemple de classification</h5>
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>Niveau</th>
+                        <th>Exemple</th>
+                        <th>Réponse</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Critique</td>
+                        <td>Biais discriminatoire</td>
+                        <td>Désactivation immédiate</td>
+                    </tr>
+                    <tr>
+                        <td>Majeur</td>
+                        <td>Erreurs systématiques</td>
+                        <td>Correctif sous 24h</td>
+                    </tr>
+                </tbody>
+            </table>
+        `
+    },
+
+    'domaine-amelioration': {
+        title: '12. Amélioration continue',
+        content: `
+            <h5>Cycle PDCA pour l'amélioration du SMIA</h5>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card text-center h-100">
+                        <div class="card-header bg-primary text-white">
+                            <h6>Planifier</h6>
+                        </div>
+                        <div class="card-body">
+                            <p>Identifier les opportunités d'amélioration</p>
+                            <p>Définir les objectifs</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-center h-100">
+                        <div class="card-header bg-primary text-white">
+                            <h6>Développer</h6>
+                        </div>
+                        <div class="card-body">
+                            <p>Implémenter les solutions</p>
+                            <p>Allouer les ressources</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-center h-100">
+                        <div class="card-header bg-primary text-white">
+                            <h6>Contrôler</h6>
+                        </div>
+                        <div class="card-body">
+                            <p>Mesurer l'efficacité</p>
+                            <p>Analyser les résultats</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-center h-100">
+                        <div class="card-header bg-primary text-white">
+                            <h6>Agir</h6>
+                        </div>
+                        <div class="card-body">
+                            <p>Standardiser les améliorations</p>
+                            <p>Capitaliser les apprentissages</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="mt-3">Sources d'amélioration</h5>
+            <ul>
+                <li>Retours d'audits</li>
+                <li>Analyse des incidents</li>
+                <li>Feedback utilisateurs</li>
+                <li>Benchmarking sectoriel</li>
+                <li>Innovations technologiques</li>
+            </ul>
+
+            <div class="alert alert-success mt-3">
+                <p><strong>Outils :</strong> Utiliser des méthodes comme le Kaizen, les cercles de qualité ou les hackathons d'amélioration.</p>
+            </div>
+        `
+    },
+
+    // Ajouter de la même manière les contenus pour les autres domaines (3 à 12)
+    'domaine-ethique': {
+        title: '3. Aspects éthiques',
+        content: `
+            <h5>Cadre éthique selon ISO/IEC 42001</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="card-header bg-primary text-white">
+                            <h6>Principes fondamentaux</h6>
+                        </div>
+                        <div class="card-body">
+                            <ol>
+                                <li>Respect des droits humains</li>
+                                <li>Équité et non-discrimination</li>
+                                <li>Transparence et explicabilité</li>
+                                <li>Responsabilité et imputabilité</li>
+                                <li>Bien-être sociétal</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="card-header bg-primary text-white">
+                            <h6>Mécanismes de mise en œuvre</h6>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Comité d'éthique IA</li>
+                                <li>Évaluations d'impact éthique</li>
+                                <li>Veille réglementaire</li>
+                                <li>Mécanismes de plainte</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="mt-3">Évaluation d'impact éthique (EIE)</h5>
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>Étape</th>
+                        <th>Actions</th>
+                        <th>Outils</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1. Identification</td>
+                        <td>Reconnaître les enjeux éthiques potentiels</td>
+                        <td>Checklists, analyse des parties prenantes</td>
+                    </tr>
+                    <tr>
+                        <td>2. Analyse</td>
+                        <td>Évaluer la probabilité et l'impact</td>
+                        <td>Matrices d'impact, scénarios</td>
+                    </tr>
+                    <tr>
+                        <td>3. Atténuation</td>
+                        <td>Développer des stratégies de mitigation</td>
+                        <td>Plans d'action, redesign</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="alert alert-warning mt-3">
+                <p><strong>Exemple :</strong> Pour un système de recrutement IA, une EIE pourrait révéler des risques de biais de genre nécessitant des ajustements algorithmiques.</p>
+            </div>
+        `
+    },
       // Introduction
       'intro-contexte': {
         title: 'Contexte de la norme ISO/IEC 42001',
