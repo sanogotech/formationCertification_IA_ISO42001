@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Certification ISO 42001 - Gestion de l'IA</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts (Inter for modern look) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-dark: #2c3e50; /* Dark blue-grey */
+            --secondary-blue: #3498db; /* Bright blue */
+            --accent-orange: #ff7f2a; /* Scrum orange */
+            --success-green: #27ae60; /* Emerald green */
+            --danger-red: #e74c3c; /* Alizarin red */
+            --light-bg: #f4f7f6; /* Light grey background */
+            --card-bg: #ffffff; /* White card background */
+            --text-color: #34495e; /* Darker text */
+            --border-color: #ecf0f1; /* Light border */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            padding: 2rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align to top for better scroll */
+            min-height: 100vh;
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            width: 100%;
+            margin: auto;
+            background-color: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .quiz-header h1 {
+            color: var(--primary-dark);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .quiz-header p {
+            text-align: center;
+            color: var(--text-color);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .progress-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .progress {
+            height: 10px;
+            border-radius: 5px;
+            background-color: var(--border-color);
+        }
+
+        .progress-bar {
+            background-color: var(--secondary-blue);
+            border-radius: 5px;
+            transition: width 0.4s ease-in-out;
+        }
+
+        #question-card {
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 2rem;
+            background-color: #fdfdfd;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 1.5rem;
+        }
+        
+        #question-text {
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+            color: var(--primary-dark);
+        }
+
+        .option-btn {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 1rem 1.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: 2px solid var(--border-color);
+            background-color: var(--card-bg);
+            transition: all 0.2s ease;
+            color: var(--text-color);
+        }
+
+        .option-btn:hover:not([disabled]) {
+            border-color: var(--accent-orange);
+            background-color: #fffaf5;
+            transform: translateY(-2px);
+        }
+        
+        .option-btn.selected {
+            background-color: #e0f2f7; /* Light blue */
+            border-color: var(--secondary-blue);
+            font-weight: 600;
+        }
+
+        .option-btn.correct {
+            background-color: #e9f7ef; /* Light green */
+            border-color: var(--success-green);
+            color: var(--success-green);
+            font-weight: 700;
+        }
+
+        .option-btn.incorrect {
+            background-color: #fdeded; /* Light red */
+            border-color: var(--danger-red);
+            color: var(--danger-red);
+            font-weight: 700;
+        }
+
+        #explanation-box {
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        #explanation-box h5 {
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .explanation-correct {
+             background-color: #e9f7ef;
+             border-left: 5px solid var(--success-green);
+             color: var(--success-green);
+        }
+
+        .explanation-incorrect {
+            background-color: #fdeded;
+            border-left: 5px solid var(--danger-red);
+            color: var(--danger-red);
+        }
+        .explanation-text {
+            color: var(--text-color); /* Ensure explanation text is readable */
+        }
+
+        .quiz-navigation {
+            display: flex;
+            justify-content: flex-end; /* Align next button to the right */
+            margin-top: 2rem;
+        }
+
+        .nav-btn {
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        /* Timer specific styles */
+        #timer-bar-container {
+            width: 100%;
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        #timer-bar {
+            height: 100%;
+            width: 100%;
+            background-color: var(--secondary-blue);
+            border-radius: 4px;
+            transition: width 1s linear; /* Smooth transition for 1-second decrements */
+        }
+        #timer-text {
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--secondary-blue);
+            margin-bottom: 1rem;
+        }
+        #timer-text.warning {
+            color: var(--danger-red);
+        }
+
+        /* Modal styling */
+        .modal-header {
+            background-color: var(--primary-dark);
+            color: var(--card-bg);
+            border-bottom: none;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .modal-title-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+            color: var(--accent-orange);
+        }
+        
+        .modal-content {
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .final-score {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .score-text {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .level-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-top: 1rem;
+            color: var(--card-bg);
+            background-color: var(--secondary-blue); /* Default */
+        }
+
+        .level-novice { background-color: #7f8c8d; } /* Grey */
+        .level-debutant { background-color: #e67e22; } /* Carrot orange */
+        .level-intermediaire { background-color: #3498db; } /* Peter river blue */
+        .level-avance { background-color: #27ae60; } /* Emerald green */
+        .level-expert { background-color: #8e44ad; } /* Wisteria purple */
+
+        #final-recommendations h4 {
+            color: var(--primary-dark);
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        #final-recommendations ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        #final-recommendations ul li {
+            background-color: #f0f3f5;
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            margin-bottom: 0.6rem;
+            border-left: 4px solid var(--secondary-blue);
+            font-size: 0.95rem;
+        }
+        #final-recommendations ul li i {
+            margin-right: 0.8rem;
+            color: var(--secondary-blue);
+        }
+
+        .modal-footer {
+            border-top: none;
+            background-color: var(--light-bg);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h1><i class="fas fa-robot" style="color:var(--accent-orange);"></i> Certification ISO 42001 - Gestion de l'IA</h1>
+                <p>Évaluez vos connaissances en 50 questions. Chaque question a une limite de temps de 75 secondes.</p>
+            </div>
+
+            <div class="progress-section">
+                <span id="question-counter">Question 1 / 50</span>
+                <span id="current-score">Score: 0</span>
+            </div>
+            <div class="progress" style="height: 10px;">
+                <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 2%;" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+
+            <div id="timer-text">01:15</div>
+            <div id="timer-bar-container">
+                <div id="timer-bar"></div>
+            </div>
+
+            <div id="question-card" class="card">
+                <div class="card-body">
+                    <h2 id="question-text">Chargement de la question...</h2>
+                    <div id="options-container">
+                        <!-- Les boutons d'options seront insérés ici par JavaScript -->
+                    </div>
+                    <div id="explanation-box" class="d-none">
+                        <h5 id="explanation-title"></h5>
+                        <p id="explanation-text" class="explanation-text"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-navigation">
+                <!-- No previous button for a test -->
+                <button id="next-btn" class="btn btn-primary nav-btn" disabled>Suivant <i class="fas fa-arrow-right"></i></button>
+                <button id="finish-btn" class="btn btn-success nav-btn d-none">Terminer & Voir les Résultats</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for results -->
+    <div class="modal fade" id="resultsModal" tabindex="-1" aria-labelledby="resultsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resultsModalLabel"><i class="fas fa-award modal-title-icon"></i>Vos Résultats du Test ISO 42001</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center p-4">
+                    <h4 class="score-text">Votre score final est :</h4>
+                    <p class="final-score" id="final-score-percentage">0%</p>
+                    <p class="text-muted fs-5">
+                        <span id="final-score-correct">0</span> sur 
+                        <span id="final-score-total">0</span> bonnes réponses
+                    </p>
+                    <hr>
+                    <h4 class="mt-4">Votre Niveau :</h4>
+                    <span id="level-badge" class="level-badge"></span>
+                    <div id="final-recommendations" class="text-start mt-4"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="restart-quiz-btn"><i class="fas fa-redo"></i> Recommencer le test</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const quizData = {
+            questions: [
+                {
+                    question: "Quel est l'objectif principal de la norme ISO 42001?",
+                    options: [
+                        "Fournir un cadre pour le développement de systèmes d'IA",
+                        "Établir des exigences pour un système de management de l'IA",
+                        "Définir des algorithmes d'IA standardisés",
+                        "Certifier les compétences des développeurs en IA"
+                    ],
+                    correctAnswer: "Établir des exigences pour un système de management de l'IA",
+                    explanation: "L'ISO 42001 fournit un cadre pour établir, mettre en œuvre, maintenir et améliorer un système de management de l'intelligence artificielle (SMIA) au sein d'une organisation."
+                },
+                {
+                    question: "Quel principe fondamental de l'ISO 42001 met l'accent sur la nécessité de prendre en compte les impacts sociétaux de l'IA?",
+                    options: [
+                        "Responsabilité",
+                        "Transparence",
+                        "Impact sociétal et environnemental",
+                        "Gouvernance des données"
+                    ],
+                    correctAnswer: "Impact sociétal et environnemental",
+                    explanation: "Le principe d'impact sociétal et environnemental souligne l'importance de considérer les effets plus larges des systèmes d'IA sur la société et l'environnement."
+                },
+                {
+                    question: "Quelle est la première étape du cycle PDCA dans le contexte de l'ISO 42001?",
+                    options: [
+                        "Do (Mettre en œuvre)",
+                        "Check (Vérifier)",
+                        "Plan (Planifier)",
+                        "Act (Agir)"
+                    ],
+                    correctAnswer: "Plan (Planifier)",
+                    explanation: "Le cycle PDCA (Plan-Do-Check-Act) commence par la phase de Planification, où l'organisation établit ses objectifs et processus pour obtenir des résultats conformes à sa politique IA."
+                },
+                {
+                    question: "Quel document décrit les intentions et la direction générale d'une organisation concernant son système de management de l'IA?",
+                    options: [
+                        "Le manuel qualité",
+                        "La politique IA",
+                        "Le plan de management des risques",
+                        "Le registre des parties intéressées"
+                    ],
+                    correctAnswer: "La politique IA",
+                    explanation: "La politique IA est un document formel qui exprime les engagements et les intentions de la direction concernant son système de management de l'IA."
+                },
+                {
+                    question: "Quel est l'objectif principal d'une évaluation des risques dans le cadre de l'ISO 42001?",
+                    options: [
+                        "Identifier et traiter les risques liés aux systèmes d'IA",
+                        "Évaluer la performance des algorithmes",
+                        "Comparer différents fournisseurs d'IA",
+                        "Calculer le retour sur investissement des projets d'IA"
+                    ],
+                    correctAnswer: "Identifier et traiter les risques liés aux systèmes d'IA",
+                    explanation: "L'évaluation des risques vise à identifier les risques potentiels associés aux systèmes d'IA et à mettre en place des mesures appropriées pour les traiter."
+                },
+                {
+                    question: "Qui est responsable de s'assurer que le système de management de l'IA est conforme à l'ISO 42001?",
+                    options: [
+                        "Le responsable qualité",
+                        "La direction de l'organisation",
+                        "Le comité d'éthique",
+                        "Le responsable sécurité informatique"
+                    ],
+                    correctAnswer: "La direction de l'organisation",
+                    explanation: "La direction de l'organisation a la responsabilité ultime de s'assurer que le SMIA est conforme aux exigences de l'ISO 42001 et atteint ses objectifs."
+                },
+                {
+                    question: "Quel concept de l'ISO 42001 fait référence à la capacité d'expliquer le fonctionnement d'un système d'IA?",
+                    options: [
+                        "Explicabilité",
+                        "Auditabilité",
+                        "Traçabilité",
+                        "Interopérabilité"
+                    ],
+                    correctAnswer: "Explicabilité",
+                    explanation: "L'explicabilité est la caractéristique d'un système d'IA qui permet de comprendre et d'expliquer son fonctionnement et ses décisions."
+                },
+                {
+                    question: "Quelle est la principale différence entre l'ISO 42001 et l'ISO 9001?",
+                    options: [
+                        "L'ISO 9001 est spécifique à l'IA alors que l'ISO 42001 est générique",
+                        "L'ISO 42001 inclut des exigences spécifiques pour les systèmes d'IA",
+                        "L'ISO 9001 est obligatoire alors que l'ISO 42001 est facultative",
+                        "Il n'y a pas de différence significative entre les deux normes"
+                    ],
+                    correctAnswer: "L'ISO 42001 inclut des exigences spécifiques pour les systèmes d'IA",
+                    explanation: "Alors que l'ISO 9001 est une norme générique pour les systèmes de management de la qualité, l'ISO 42001 est spécifiquement conçue pour les systèmes de management de l'intelligence artificielle."
+                },
+                {
+                    question: "Quel élément suivant est obligatoire pour la certification ISO 42001?",
+                    options: [
+                        "Un comité d'éthique formel",
+                        "Un responsable de la protection des données",
+                        "Une politique IA documentée",
+                        "Un système d'IA propriétaire"
+                    ],
+                    correctAnswer: "Une politique IA documentée",
+                    explanation: "L'ISO 42001 exige qu'une politique IA soit établie, documentée, mise en œuvre et maintenue par l'organisation."
+                },
+                {
+                    question: "Quelle est la durée typique de validité d'une certification ISO 42001?",
+                    options: [
+                        "1 an",
+                        "3 ans",
+                        "5 ans",
+                        "Permanente tant que le système n'est pas modifié"
+                    ],
+                    correctAnswer: "3 ans",
+                    explanation: "Comme pour la plupart des certifications ISO, la certification ISO 42001 est généralement valable pour 3 ans, avec des audits de surveillance annuels."
+                },
+                {
+                    question: "Quel est l'objectif principal des audits internes dans le cadre de l'ISO 42001?",
+                    options: [
+                        "Évaluer la conformité aux exigences légales",
+                        "Vérifier l'efficacité du système de management de l'IA",
+                        "Comparer les performances avec celles des concurrents",
+                        "Former les employés aux bonnes pratiques d'IA"
+                    ],
+                    correctAnswer: "Vérifier l'efficacité du système de management de l'IA",
+                    explanation: "Les audits internes servent à évaluer si le SMIA est mis en œuvre efficacement et s'il est conforme aux exigences de l'organisation et de la norme ISO 42001."
+                },
+                {
+                    question: "Quel concept de l'ISO 42001 fait référence à la capacité de suivre l'origine et l'évolution des données et des décisions d'un système d'IA?",
+                    options: [
+                        "Explicabilité",
+                        "Traçabilité",
+                        "Reproductibilité",
+                        "Interopérabilité"
+                    ],
+                    correctAnswer: "Traçabilité",
+                    explanation: "La traçabilité permet de suivre l'origine des données, les transformations appliquées et les décisions prises par le système d'IA tout au long de son cycle de vie."
+                },
+                {
+                    question: "Quel est le principal avantage de mettre en œuvre l'ISO 42001 pour une organisation?",
+                    options: [
+                        "Garantir que les systèmes d'IA sont toujours les plus performants du marché",
+                        "Démontrer un engagement envers le développement et l'utilisation responsables de l'IA",
+                        "Obtenir un avantage technologique sur les concurrents",
+                        "Réduire les coûts de développement des systèmes d'IA"
+                    ],
+                    correctAnswer: "Démontrer un engagement envers le développement et l'utilisation responsables de l'IA",
+                    explanation: "L'ISO 42001 aide les organisations à démontrer leur engagement envers une IA responsable, ce qui peut renforcer la confiance des parties prenantes et répondre aux attentes réglementaires."
+                },
+                {
+                    question: "Quel élément suivant doit être inclus dans le champ d'application du SMIA selon l'ISO 42001?",
+                    options: [
+                        "La liste complète des algorithmes utilisés",
+                        "Les limites et l'applicabilité du système de management de l'IA",
+                        "Le budget annuel alloué aux projets d'IA",
+                        "Les noms des responsables de chaque projet d'IA"
+                    ],
+                    correctAnswer: "Les limites et l'applicabilité du système de management de l'IA",
+                    explanation: "Le champ d'application du SMIA doit clairement définir les limites et l'applicabilité du système, y compris les produits, services et processus couverts."
+                },
+                {
+                    question: "Quel est l'objectif principal de la surveillance et de la mesure dans le cadre de l'ISO 42001?",
+                    options: [
+                        "Prouver la supériorité technologique de l'organisation",
+                        "Évaluer la performance du SMIA et des systèmes d'IA",
+                        "Collecter des données pour la recherche et le développement",
+                        "Surveiller les activités des employés"
+                    ],
+                    correctAnswer: "Évaluer la performance du SMIA et des systèmes d'IA",
+                    explanation: "La surveillance et la mesure permettent à l'organisation d'évaluer si le SMIA fonctionne comme prévu et si les systèmes d'IA atteignent leurs objectifs."
+                },
+                {
+                    question: "Quel principe de l'ISO 42001 exige que les systèmes d'IA ne produisent pas de résultats biaisés ou discriminatoires?",
+                    options: [
+                        "Équité",
+                        "Transparence",
+                        "Robustesse",
+                        "Confidentialité"
+                    ],
+                    correctAnswer: "Équité",
+                    explanation: "Le principe d'équité exige que les systèmes d'IA soient conçus et utilisés de manière à éviter les biais injustes et la discrimination."
+                },
+                {
+                    question: "Quel document enregistre les preuves de la conformité aux exigences de l'ISO 42001?",
+                    options: [
+                        "Le manuel qualité",
+                        "Le registre des informations documentées",
+                        "Le plan de communication",
+                        "La politique de sécurité"
+                    ],
+                    correctAnswer: "Le registre des informations documentées",
+                    explanation: "Le registre des informations documentées conserve les preuves de la mise en œuvre efficace du SMIA et de la conformité aux exigences de la norme."
+                },
+                {
+                    question: "Quelle est la première étape du processus de certification ISO 42001?",
+                    options: [
+                        "Audit de certification",
+                        "Audit de surveillance",
+                        "Audit de stage 1 (pré-audit)",
+                        "Évaluation des compétences"
+                    ],
+                    correctAnswer: "Audit de stage 1 (pré-audit)",
+                    explanation: "Le processus de certification commence généralement par un audit de stage 1 (pré-audit) qui évalue la préparation de l'organisation et la documentation du SMIA."
+                },
+                {
+                    question: "Quel est l'objectif principal des actions correctives dans le cadre de l'ISO 42001?",
+                    options: [
+                        "Éliminer les causes des non-conformités et prévenir leur récurrence",
+                        "Punir les responsables des non-conformités",
+                        "Documenter les échecs du système",
+                        "Justifier les dépassements de budget"
+                    ],
+                    correctAnswer: "Éliminer les causes des non-conformités et prévenir leur récurrence",
+                    explanation: "Les actions correctives visent à identifier et éliminer les causes profondes des non-conformités pour empêcher qu'elles ne se reproduisent."
+                },
+                {
+                    question: "Quel aspect suivant doit être pris en compte lors de l'évaluation des risques d'un système d'IA selon l'ISO 42001?",
+                    options: [
+                        "L'impact sur la réputation de l'organisation",
+                        "Le coût des licences logicielles",
+                        "La popularité de la technologie utilisée",
+                        "La couleur de l'interface utilisateur"
+                    ],
+                    correctAnswer: "L'impact sur la réputation de l'organisation",
+                    explanation: "L'évaluation des risques doit considérer divers aspects, y compris l'impact potentiel sur la réputation de l'organisation en cas de dysfonctionnement ou d'utilisation inappropriée du système d'IA."
+                },
+                {
+                    question: "Quel principe de l'ISO 42001 exige que les systèmes d'IA fonctionnent comme prévu même dans des conditions imprévues?",
+                    options: [
+                        "Robustesse",
+                        "Transparence",
+                        "Explicabilité",
+                        "Équité"
+                    ],
+                    correctAnswer: "Robustesse",
+                    explanation: "Le principe de robustesse exige que les systèmes d'IA soient suffisamment résilients pour fonctionner correctement même dans des conditions imprévues ou adverses."
+                },
+                {
+                    question: "Quelle partie intéressée est généralement la plus concernée par la conformité à l'ISO 42001?",
+                    options: [
+                        "Les fournisseurs de matériel informatique",
+                        "Les clients utilisant les systèmes d'IA",
+                        "Les concurrents de l'organisation",
+                        "Les médias locaux"
+                    ],
+                    correctAnswer: "Les clients utilisant les systèmes d'IA",
+                    explanation: "Les clients qui utilisent ou sont affectés par les systèmes d'IA sont parmi les parties intéressées les plus concernées par la conformité à l'ISO 42001."
+                },
+                {
+                    question: "Quel est l'objectif principal de la revue de direction dans le cadre de l'ISO 42001?",
+                    options: [
+                        "Évaluer la performance individuelle des employés",
+                        "Assurer l'adéquation, l'efficacité et l'amélioration continue du SMIA",
+                        "Présenter les derniers développements technologiques en IA",
+                        "Négocier avec les fournisseurs"
+                    ],
+                    correctAnswer: "Assurer l'adéquation, l'efficacité et l'amélioration continue du SMIA",
+                    explanation: "La revue de direction a pour but d'évaluer le SMIA dans son ensemble et de s'assurer qu'il reste approprié, adéquat et efficace."
+                },
+                {
+                    question: "Quel document décrit comment une organisation répond aux exigences de l'ISO 42001?",
+                    options: [
+                        "Le manuel du SMIA",
+                        "La politique de sécurité",
+                        "Le plan de formation",
+                        "Le rapport annuel"
+                    ],
+                    correctAnswer: "Le manuel du SMIA",
+                    explanation: "Le manuel du SMIA est un document qui décrit comment l'organisation a mis en œuvre son système de management de l'IA pour répondre aux exigences de l'ISO 42001."
+                },
+                {
+                    question: "Quel est l'objectif principal des indicateurs de performance (KPI) dans le cadre de l'ISO 42001?",
+                    options: [
+                        "Comparer les performances avec celles des concurrents",
+                        "Mesurer l'efficacité du SMIA et des systèmes d'IA",
+                        "Calculer les bonus des employés",
+                        "Justifier les investissements en matériel"
+                    ],
+                    correctAnswer: "Mesurer l'efficacité du SMIA et des systèmes d'IA",
+                    explanation: "Les indicateurs de performance (KPI) sont utilisés pour mesurer et évaluer l'efficacité du SMIA et des systèmes d'IA par rapport aux objectifs définis."
+                },
+                {
+                    question: "Quel aspect suivant relève de la gouvernance des données selon l'ISO 42001?",
+                    options: [
+                        "La gestion du cycle de vie des données utilisées par les systèmes d'IA",
+                        "Le choix des couleurs de l'interface utilisateur",
+                        "La sélection des fournisseurs de café",
+                        "L'organisation des événements sociaux"
+                    ],
+                    correctAnswer: "La gestion du cycle de vie des données utilisées par les systèmes d'IA",
+                    explanation: "La gouvernance des données dans l'ISO 42001 concerne la gestion appropriée des données tout au long de leur cycle de vie, y compris leur collecte, stockage, utilisation et suppression."
+                },
+                {
+                    question: "Quelle est la fréquence minimale recommandée pour les revues de direction selon l'ISO 42001?",
+                    options: [
+                        "Quotidienne",
+                        "Hebdomadaire",
+                        "Mensuelle",
+                        "Annuelle"
+                    ],
+                    correctAnswer: "Annuelle",
+                    explanation: "Bien que la fréquence puisse varier selon les besoins de l'organisation, l'ISO 42001 recommande au minimum des revues de direction annuelles pour évaluer le SMIA."
+                },
+                {
+                    question: "Quel est l'objectif principal de la communication dans le cadre de l'ISO 42001?",
+                    options: [
+                        "Faire de la publicité pour les produits d'IA",
+                        "Assurer que les informations pertinentes sont disponibles pour les parties intéressées",
+                        "Organiser des événements sociaux",
+                        "Communiquer exclusivement avec la direction"
+                    ],
+                    correctAnswer: "Assurer que les informations pertinentes sont disponibles pour les parties intéressées",
+                    explanation: "La communication dans le cadre de l'ISO 42001 vise à s'assurer que les informations pertinentes sur le SMIA sont disponibles pour les parties intéressées internes et externes."
+                },
+                {
+                    question: "Quel aspect suivant est couvert par le principe de confidentialité dans l'ISO 42001?",
+                    options: [
+                        "Protection des données sensibles utilisées par les systèmes d'IA",
+                        "Performance des algorithmes d'IA",
+                        "Design des interfaces utilisateur",
+                        "Coût des infrastructures cloud"
+                    ],
+                    correctAnswer: "Protection des données sensibles utilisées par les systèmes d'IA",
+                    explanation: "Le principe de confidentialité concerne la protection appropriée des données sensibles et personnelles utilisées par ou générées par les systèmes d'IA."
+                },
+                {
+                    question: "Quel document décrit les responsabilités et autorités des personnes impliquées dans le SMIA?",
+                    options: [
+                        "L'organigramme de l'entreprise",
+                        "La description des rôles et responsabilités",
+                        "Le plan de formation",
+                        "Le manuel des procédures"
+                    ],
+                    correctAnswer: "La description des rôles et responsabilités",
+                    explanation: "Un document décrivant les rôles et responsabilités doit être établi pour clarifier qui fait quoi dans le cadre du SMIA."
+                },
+                {
+                    question: "Quel est l'objectif principal de la formation dans le cadre de l'ISO 42001?",
+                    options: [
+                        "Assurer que le personnel est compétent pour exercer ses responsabilités dans le SMIA",
+                        "Former exclusivement les développeurs d'IA",
+                        "Organiser des séminaires pour les clients",
+                        "Réduire les coûts de recrutement"
+                    ],
+                    correctAnswer: "Assurer que le personnel est compétent pour exercer ses responsabilités dans le SMIA",
+                    explanation: "La formation vise à développer les compétences nécessaires pour que le personnel puisse contribuer efficacement au SMIA selon ses responsabilités."
+                },
+                {
+                    question: "Quel aspect suivant doit être considéré dans la conception d'un système d'IA conforme à l'ISO 42001?",
+                    options: [
+                        "Les impacts potentiels sur les droits de l'homme",
+                        "La popularité du langage de programmation utilisé",
+                        "Le prix des actions de l'entreprise",
+                        "Les préférences personnelles des développeurs"
+                    ],
+                    correctAnswer: "Les impacts potentiels sur les droits de l'homme",
+                    explanation: "La conception des systèmes d'IA doit prendre en compte leurs impacts potentiels sur les droits de l'homme, conformément aux principes de l'ISO 42001."
+                },
+                {
+                    question: "Quel est l'objectif principal du traitement des réclamations dans le cadre de l'ISO 42001?",
+                    options: [
+                        "Ignorer les critiques pour éviter les conflits",
+                        "Fournir une réponse systématique et appropriée aux préoccupations concernant les systèmes d'IA",
+                        "Réduire les coûts de support client",
+                        "Augmenter la charge de travail des équipes"
+                    ],
+                    correctAnswer: "Fournir une réponse systématique et appropriée aux préoccupations concernant les systèmes d'IA",
+                    explanation: "Le traitement des réclamations vise à répondre de manière appropriée aux préoccupations soulevées concernant les systèmes d'IA et leur utilisation."
+                },
+                {
+                    question: "Quel concept de l'ISO 42001 fait référence à la capacité d'un système d'IA à résister aux attaques malveillantes?",
+                    options: [
+                        "Sécurité",
+                        "Robustesse",
+                        "Résilience",
+                        "Tolérance aux pannes"
+                    ],
+                    correctAnswer: "Sécurité",
+                    explanation: "La sécurité des systèmes d'IA concerne leur capacité à résister aux attaques malveillantes et à protéger leur intégrité et leur confidentialité."
+                },
+                {
+                    question: "Quel est l'objectif principal de la documentation dans le cadre de l'ISO 42001?",
+                    options: [
+                        "Créer de la paperasse inutile",
+                        "Fournir des preuves de la conformité et faciliter la connaissance organisationnelle",
+                        "Augmenter le nombre de pages dans le manuel qualité",
+                        "Justifier l'embauche de plus de personnel administratif"
+                    ],
+                    correctAnswer: "Fournir des preuves de la conformité et faciliter la connaissance organisationnelle",
+                    explanation: "La documentation sert à la fois de preuve de conformité et de moyen de préserver et partager la connaissance organisationnelle sur le SMIA."
+                },
+                {
+                    question: "Quel principe de l'ISO 42001 exige que les systèmes d'IA ne causent pas de préjudice aux personnes?",
+                    options: [
+                        "Non-malfaisance",
+                        "Bienfaisance",
+                        "Autonomie",
+                        "Justice"
+                    ],
+                    correctAnswer: "Non-malfaisance",
+                    explanation: "Le principe de non-malfaisance (ou ne pas nuire) exige que les systèmes d'IA soient conçus et utilisés de manière à éviter de causer des préjudices aux individus ou à la société."
+                },
+                {
+                    question: "Quel est l'objectif principal de l'amélioration continue dans le cadre de l'ISO 42001?",
+                    options: [
+                        "Maintenir la conformité aux exigences de la norme",
+                        "Améliorer en permanence l'efficacité du SMIA",
+                        "Réduire les coûts à tout prix",
+                        "Augmenter la charge de travail des employés"
+                    ],
+                    correctAnswer: "Améliorer en permanence l'efficacité du SMIA",
+                    explanation: "L'amélioration continue vise à améliorer constamment l'efficacité du SMIA et la performance des systèmes d'IA."
+                },
+                {
+                    question: "Quel aspect suivant doit être inclus dans la politique IA selon l'ISO 42001?",
+                    options: [
+                        "L'engagement à améliorer continuellement le SMIA",
+                        "Le salaire des employés",
+                        "Les secrets commerciaux de l'organisation",
+                        "Les noms des clients"
+                    ],
+                    correctAnswer: "L'engagement à améliorer continuellement le SMIA",
+                    explanation: "La politique IA doit inclure un engagement clair de la direction à améliorer continuellement le SMIA."
+                },
+                {
+                    question: "Quel est l'objectif principal des exercices de sensibilisation dans le cadre de l'ISO 42001?",
+                    options: [
+                        "Former exclusivement les développeurs",
+                        "Assurer que tout le personnel comprend l'importance du SMIA",
+                        "Organiser des événements sociaux",
+                        "Réduire les coûts de formation"
+                    ],
+                    correctAnswer: "Assurer que tout le personnel comprend l'importance du SMIA",
+                    explanation: "Les exercices de sensibilisation visent à faire comprendre à tout le personnel l'importance du SMIA et leur rôle dans son succès."
+                },
+                {
+                    question: "Quel document décrit les processus pour identifier et traiter les risques liés à l'IA?",
+                    options: [
+                        "Le plan de management des risques",
+                        "Le manuel des procédures",
+                        "La politique de sécurité",
+                        "Le rapport annuel"
+                    ],
+                    correctAnswer: "Le plan de management des risques",
+                    explanation: "Le plan de management des risques décrit les méthodes et processus pour identifier, évaluer et traiter les risques associés aux systèmes d'IA."
+                },
+                {
+                    question: "Quel principe de l'ISO 42001 exige que les individus puissent contester les décisions des systèmes d'IA?",
+                    options: [
+                        "Contestabilité",
+                        "Transparence",
+                        "Explicabilité",
+                        "Équité"
+                    ],
+                    correctAnswer: "Contestabilité",
+                    explanation: "Le principe de contestabilité garantit que les individus affectés par les décisions des systèmes d'IA ont la possibilité de les contester et d'obtenir une révision humaine."
+                },
+                {
+                    question: "Quel est l'objectif principal des tests de validation dans le cadre de l'ISO 42001?",
+                    options: [
+                        "Vérifier que le système d'IA répond aux besoins et attentes des utilisateurs",
+                        "Mesurer la vitesse d'exécution des algorithmes",
+                        "Comparer les performances avec les concurrents",
+                        "Justifier les investissements en matériel"
+                    ],
+                    correctAnswer: "Vérifier que le système d'IA répond aux besoins et attentes des utilisateurs",
+                    explanation: "Les tests de validation visent à s'assurer que le système d'IA répond effectivement aux besoins et attentes des utilisateurs finaux et des parties prenantes."
+                },
+                {
+                    question: "Quel aspect suivant est couvert par le principe de transparence dans l'ISO 42001?",
+                    options: [
+                        "Communication claire sur les capacités et limites des systèmes d'IA",
+                        "Performance des algorithmes",
+                        "Coût des infrastructures cloud",
+                        "Design des interfaces utilisateur"
+                    ],
+                    correctAnswer: "Communication claire sur les capacités et limites des systèmes d'IA",
+                    explanation: "Le principe de transparence exige une communication claire et ouverte sur ce que les systèmes d'IA peuvent et ne peuvent pas faire, ainsi que sur leurs limites."
+                },
+                {
+                    question: "Quel document enregistre les incidents liés aux systèmes d'IA et les actions prises?",
+                    options: [
+                        "Le registre des incidents",
+                        "Le manuel qualité",
+                        "Le plan de communication",
+                        "Le rapport annuel"
+                    ],
+                    correctAnswer: "Le registre des incidents",
+                    explanation: "Le registre des incidents documente les problèmes survenus avec les systèmes d'IA, leurs impacts et les mesures correctives prises."
+                },
+                {
+                    question: "Quel est l'objectif principal du contrôle des documents dans le cadre de l'ISO 42001?",
+                    options: [
+                        "Assurer que seuls les documents actuels et approuvés sont utilisés",
+                        "Réduire le nombre de documents",
+                        "Centraliser tous les documents dans un seul bureau",
+                        "Limiter l'accès à tous les employés"
+                    ],
+                    correctAnswer: "Assurer que seuls les documents actuels et approuvés sont utilisés",
+                    explanation: "Le contrôle des documents vise à s'assurer que les documents du SMIA sont à jour, approuvés et disponibles là où ils sont nécessaires."
+                },
+                {
+                    question: "Quel principe de l'ISO 42001 met l'accent sur le respect de la volonté et des choix des individus?",
+                    options: [
+                        "Autonomie",
+                        "Bienfaisance",
+                        "Non-malfaisance",
+                        "Justice"
+                    ],
+                    correctAnswer: "Autonomie",
+                    explanation: "Le principe d'autonomie respecte le droit des individus à faire leurs propres choix et à contrôler leur interaction avec les systèmes d'IA."
+                },
+                {
+                    question: "Quel est l'objectif principal des procédures documentées dans le cadre de l'ISO 42001?",
+                    options: [
+                        "Créer de la bureaucratie",
+                        "Fournir des instructions claires pour les activités critiques du SMIA",
+                        "Augmenter le nombre de pages dans le manuel qualité",
+                        "Justifier l'embauche de plus de personnel administratif"
+                    ],
+                    correctAnswer: "Fournir des instructions claires pour les activités critiques du SMIA",
+                    explanation: "Les procédures documentées fournissent des instructions claires pour les activités critiques du SMIA, assurant la cohérence et la conformité."
+                },
+                {
+                    question: "Quel aspect suivant doit être considéré lors de la surveillance des performances d'un système d'IA?",
+                    options: [
+                        "L'alignement avec les objectifs éthiques et commerciaux",
+                        "Le salaire des développeurs",
+                        "La couleur de l'interface utilisateur",
+                        "Les préférences personnelles des managers"
+                    ],
+                    correctAnswer: "L'alignement avec les objectifs éthiques et commerciaux",
+                    explanation: "La surveillance des performances doit évaluer si le système d'IA reste aligné avec les objectifs éthiques et commerciaux de l'organisation."
+                },
+                {
+                    question: "Quel est l'objectif principal des évaluations périodiques dans le cadre de l'ISO 42001?",
+                    options: [
+                        "Vérifier en continu la conformité et l'efficacité du SMIA",
+                        "Augmenter la charge de travail des employés",
+                        "Créer des rapports pour la direction",
+                        "Justifier les budgets"
+                    ],
+                    correctAnswer: "Vérifier en continu la conformité et l'efficacité du SMIA",
+                    explanation: "Les évaluations périodiques permettent de vérifier régulièrement que le SMIA reste conforme et efficace pour répondre aux objectifs de l'organisation."
+                },
+                {
+                    question: "Quel principe de l'ISO 42001 exige que les bénéfices des systèmes d'IA soient distribués équitablement?",
+                    options: [
+                        "Justice",
+                        "Équité",
+                        "Bienfaisance",
+                        "Autonomie"
+                    ],
+                    correctAnswer: "Justice",
+                    explanation: "Le principe de justice concerne la distribution équitable des bénéfices et des charges associés aux systèmes d'IA dans la société."
+                },
+                {
+                    question: "Quel est l'objectif principal du traitement des non-conformités dans le cadre de l'ISO 42001?",
+                    options: [
+                        "Identifier et corriger les écarts par rapport aux exigences du SMIA",
+                        "Punir les responsables",
+                        "Cacher les problèmes à la direction",
+                        "Réduire les coûts à court terme"
+                    ],
+                    correctAnswer: "Identifier et corriger les écarts par rapport aux exigences du SMIA",
+                    explanation: "Le traitement des non-conformités vise à identifier, documenter et corriger les écarts par rapport aux exigences du SMIA."
+                },
+                {
+                    question: "Quel aspect suivant est essentiel pour la conformité à l'ISO 42001 en matière de données?",
+                    options: [
+                        "La qualité et la pertinence des données utilisées par les systèmes d'IA",
+                        "La quantité de données stockées",
+                        "Le coût des serveurs de données",
+                        "La popularité des sources de données"
+                    ],
+                    correctAnswer: "La qualité et la pertinence des données utilisées par les systèmes d'IA",
+                    explanation: "La qualité et la pertinence des données sont essentielles pour assurer que les systèmes d'IA fonctionnent comme prévu et produisent des résultats fiables."
+                },
+                {
+                    question: "Quel est l'objectif principal des indicateurs d'alerte précoce dans le cadre de l'ISO 42001?",
+                    options: [
+                        "Détecter les problèmes potentiels avant qu'ils ne deviennent critiques",
+                        "Augmenter la charge de travail des équipes",
+                        "Créer plus de rapports",
+                        "Justifier l'achat de nouveaux outils"
+                    ],
+                    correctAnswer: "Détecter les problèmes potentiels avant qu'ils ne deviennent critiques",
+                    explanation: "Les indicateurs d'alerte précoce aident à identifier les tendances ou problèmes potentiels avant qu'ils n'aient un impact significatif sur le SMIA ou les systèmes d'IA."
+                }
+            ]
+        };
+
+        // DOM Elements
+        const questionCounterEl = document.getElementById('question-counter');
+        const currentScoreEl = document.getElementById('current-score');
+        const progressBarEl = document.getElementById('progress-bar');
+        const questionTextEl = document.getElementById('question-text');
+        const optionsContainerEl = document.getElementById('options-container');
+        const explanationBoxEl = document.getElementById('explanation-box');
+        const explanationTitleEl = document.getElementById('explanation-title');
+        const explanationTextEl = document.getElementById('explanation-text');
+        const nextBtn = document.getElementById('next-btn');
+        const finishBtn = document.getElementById('finish-btn');
+        const timerTextEl = document.getElementById('timer-text');
+        const timerBarEl = document.getElementById('timer-bar');
+        
+        // Modal Elements
+        const resultsModal = new bootstrap.Modal(document.getElementById('resultsModal'));
+        const finalScoreCorrectEl = document.getElementById('final-score-correct');
+        const finalScoreTotalEl = document.getElementById('final-score-total');
+        const finalScorePercentageEl = document.getElementById('final-score-percentage');
+        const levelBadgeEl = document.getElementById('level-badge');
+        const finalRecommendationsEl = document.getElementById('final-recommendations');
+        const restartQuizBtn = document.getElementById('restart-quiz-btn');
+
+        // Quiz State
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let userAnswers = []; // Stores { selected: "...", correct: "...", isCorrect: true/false }
+        let questions = []; // Shuffled questions
+        let timerInterval;
+        const TIME_PER_QUESTION = 75; // seconds
+        let timeLeft = TIME_PER_QUESTION;
+        let answeredCurrentQuestion = false; // To prevent multiple selections/timer issues
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function startQuiz() {
+            questions = shuffleArray([...quizData.questions]);
+            currentQuestionIndex = 0;
+            score = 0;
+            userAnswers = new Array(questions.length).fill(null);
+            resultsModal.hide();
+            displayQuestion(currentQuestionIndex);
+            updateScoreDisplay();
+        }
+
+        function displayQuestion(index) {
+            // Reset state for new question
+            answeredCurrentQuestion = false;
+            explanationBoxEl.classList.add('d-none');
+            nextBtn.disabled = true; // Disable next until answered or time runs out
+            timerTextEl.classList.remove('warning');
+
+            if (index >= questions.length) {
+                showFinalResults();
+                return;
+            }
+
+            const question = questions[index];
+            questionTextEl.textContent = question.question;
+            
+            optionsContainerEl.innerHTML = ''; // Clear previous options
+            
+            // Add A, B, C, D prefixes to options
+            question.options.forEach((optionText, optionIndex) => {
+                const button = document.createElement('button');
+                const prefix = String.fromCharCode(65 + optionIndex); // Gets A, B, C, etc.
+                button.textContent = `${prefix}. ${optionText}`;
+                button.classList.add('btn', 'option-btn');
+                button.onclick = () => selectAnswer(button, optionText, index);
+                optionsContainerEl.appendChild(button);
+            });
+            
+            updateNavigation();
+            updateProgressBar();
+            startTimer();
+        }
+        
+        function selectAnswer(button, selectedAnswer, questionIndex) {
+            if (answeredCurrentQuestion) return; // Prevent multiple selections
+            answeredCurrentQuestion = true;
+            clearInterval(timerInterval); // Stop the timer
+
+            const question = questions[questionIndex];
+            const isCorrect = selectedAnswer === question.correctAnswer;
+            
+            userAnswers[questionIndex] = {
+                selected: selectedAnswer,
+                correct: question.correctAnswer,
+                isCorrect: isCorrect,
+                timeTaken: TIME_PER_QUESTION - timeLeft // Record time taken
+            };
+            
+            if(isCorrect) {
+                score++;
+            }
+            updateScoreDisplay();
+            showAnswerFeedback(questionIndex);
+            nextBtn.disabled = false; // Enable next button
+            
+            // If this is the last question, show finish button
+            if (currentQuestionIndex === questions.length - 1) {
+                nextBtn.classList.add('d-none');
+                finishBtn.classList.remove('d-none');
+            }
+        }
+
+        function showAnswerFeedback(index) {
+            const userAnswer = userAnswers[index];
+            if (!userAnswer) return; // Should not happen if called after selectAnswer or timer runs out
+
+            const question = questions[index];
+
+            // Disable all option buttons and highlight selection
+            const optionButtons = optionsContainerEl.querySelectorAll('.option-btn');
+            optionButtons.forEach(btn => {
+                btn.disabled = true;
+                // The text content now includes the "A. " prefix, so we need to check if the correct/selected answer is a substring
+                if (btn.textContent.includes(userAnswer.correct)) {
+                    btn.classList.add('correct');
+                } else if (btn.textContent.includes(userAnswer.selected) && !userAnswer.isCorrect) {
+                    btn.classList.add('incorrect');
+                }
+            });
+
+            // Show explanation
+            explanationTextEl.textContent = question.explanation;
+            if (userAnswer.isCorrect) {
+                explanationTitleEl.textContent = "Correct !";
+                explanationBoxEl.className = 'explanation-correct';
+            } else {
+                explanationTitleEl.textContent = "Incorrect. Explication :";
+                explanationBoxEl.className = 'explanation-incorrect';
+            }
+            explanationBoxEl.classList.remove('d-none');
+        }
+
+        function startTimer() {
+            timeLeft = TIME_PER_QUESTION;
+            updateTimerDisplay();
+            timerBarEl.style.transition = `width ${TIME_PER_QUESTION}s linear`; // Smooth transition for full duration
+            timerBarEl.style.width = '0%'; // Start from 100% and go to 0%
+
+            // Reset transition for next question to ensure it starts from 100%
+            setTimeout(() => {
+                timerBarEl.style.transition = 'none';
+                timerBarEl.style.width = '100%';
+                setTimeout(() => {
+                    timerBarEl.style.transition = `width ${TIME_PER_QUESTION}s linear`;
+                    timerBarEl.style.width = '0%';
+                }, 50); // Small delay to apply reset before starting transition
+            }, 0);
+
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay();
+
+                if (timeLeft <= 10) { // Warning for last 10 seconds
+                    timerTextEl.classList.add('warning');
+                }
+
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    timerTextEl.classList.remove('warning');
+                    // Automatically mark as incorrect and move to next
+                    if (!answeredCurrentQuestion) {
+                        userAnswers[currentQuestionIndex] = {
+                            selected: null, // No answer selected
+                            correct: questions[currentQuestionIndex].correctAnswer,
+                            isCorrect: false,
+                            timeTaken: TIME_PER_QUESTION // Full time taken
+                        };
+                        showAnswerFeedback(currentQuestionIndex);
+                        updateScoreDisplay(); // Score won't change as it's incorrect
+                        nextBtn.disabled = false; // Enable next button
+                        
+                        // If this is the last question, show finish button
+                        if (currentQuestionIndex === questions.length - 1) {
+                            nextBtn.classList.add('d-none');
+                            finishBtn.classList.remove('d-none');
+                        }
+                    }
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerTextEl.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            // Timer bar width is handled by CSS transition
+        }
+
+        function updateNavigation() {
+            // No previous button for this test type
+            // nextBtn and finishBtn visibility handled by selectAnswer/timer logic
+        }
+
+        function updateProgressBar() {
+            const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+            progressBarEl.style.width = `${progress}%`;
+            progressBarEl.setAttribute('aria-valuenow', progress);
+            questionCounterEl.textContent = `Question ${currentQuestionIndex + 1} / ${questions.length}`;
+        }
+        
+        function updateScoreDisplay() {
+            currentScoreEl.textContent = `Score: ${score}`;
+        }
+
+        function handleNext() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                displayQuestion(currentQuestionIndex);
+            } else {
+                showFinalResults();
+            }
+        }
+
+        function determineLevelAndRecommendations(percentage) {
+            let level = "";
+            let levelClass = "";
+            let recommendations = "";
+
+            if (percentage >= 90) {
+                level = "Expert ISO 42001";
+                levelClass = "level-expert";
+                recommendations = `
+                    <h4><i class="fas fa-star-half-alt"></i> Félicitations, Expert(e) !</h4>
+                    <p>Votre maîtrise des concepts de l'ISO 42001 est exceptionnelle. Vous êtes prêt(e) à guider les organisations dans la mise en œuvre de systèmes de management de l'IA.</p>
+                    <h5><i class="fas fa-route"></i> Feuille de route :</h5>
+                    <ul>
+                        <li><i class="fas fa-lightbulb"></i> Envisagez de devenir auditeur ou consultant en certification ISO 42001.</li>
+                        <li><i class="fas fa-chalkboard-teacher"></i> Partagez votre expertise en formant d'autres professionnels.</li>
+                        <li><i class="fas fa-users-cog"></i> Participez à l'élaboration de politiques et de normes dans le domaine de l'IA.</li>
+                        <li><i class="fas fa-book"></i> Approfondissez vos connaissances sur les cadres réglementaires émergents en IA.</li>
+                    </ul>
+                `;
+            } else if (percentage >= 70) {
+                level = "Avancé(e) en ISO 42001";
+                levelClass = "level-avance";
+                recommendations = `
+                    <h4><i class="fas fa-check-circle"></i> Très bien, niveau Avancé !</h4>
+                    <p>Vous avez une excellente compréhension de l'ISO 42001 et êtes bien préparé(e) pour participer à des projets de mise en œuvre.</p>
+                    <h5><i class="fas fa-route"></i> Feuille de route :</h5>
+                    <ul>
+                        <li><i class="fas fa-cogs"></i> Participez à un projet réel de mise en œuvre de l'ISO 42001.</li>
+                        <li><i class="fas fa-certificate"></i> Préparez-vous pour la certification officielle ISO 42001.</li>
+                        <li><i class="fas fa-comments"></i> Échangez avec des professionnels expérimentés pour approfondir votre compréhension.</li>
+                        <li><i class="fas fa-search-plus"></i> Étudiez des cas d'implémentation complexes dans différents secteurs.</li>
+                    </ul>
+                `;
+            } else if (percentage >= 50) {
+                level = "Intermédiaire en ISO 42001";
+                levelClass = "level-intermediaire";
+                recommendations = `
+                    <h4><i class="fas fa-info-circle"></i> Bon début, niveau Intermédiaire !</h4>
+                    <p>Vous avez acquis les bases solides de l'ISO 42001. Continuez à approfondir vos connaissances pour maîtriser tous les aspects de la norme.</p>
+                    <h5><i class="fas fa-route"></i> Feuille de route :</h5>
+                    <ul>
+                        <li><i class="fas fa-redo-alt"></i> Revoyez les sections de la norme où vous avez fait des erreurs.</li>
+                        <li><i class="fas fa-book-reader"></i> Lisez le texte complet de la norme ISO 42001 et ses lignes directrices.</li>
+                        <li><i class="fas fa-users"></i> Participez à des formations ou webinaires sur l'ISO 42001.</li>
+                        <li><i class="fas fa-question-circle"></i> Posez des questions à des experts pour clarifier les concepts difficiles.</li>
+                    </ul>
+                `;
+            } else if (percentage >= 25) {
+                level = "Débutant(e) en ISO 42001";
+                levelClass = "level-debutant";
+                recommendations = `
+                    <h4><i class="fas fa-seedling"></i> En croissance, niveau Débutant !</h4>
+                    <p>Vous commencez votre parcours dans l'ISO 42001. Les concepts sont nouveaux, mais avec de la persévérance, vous progresserez rapidement.</p>
+                    <h5><i class="fas fa-route"></i> Feuille de route :</h5>
+                    <ul>
+                        <li><i class="fas fa-graduation-cap"></i> Suivez une formation introductive à l'ISO 42001.</li>
+                        <li><i class="fas fa-video"></i> Regardez des tutoriels et des présentations sur les principes de base.</li>
+                        <li><i class="fas fa-sticky-note"></i> Créez des fiches de révision pour les termes et concepts clés.</li>
+                        <li><i class="fas fa-lightbulb"></i> Essayez de relier les concepts à des exemples concrets d'application.</li>
+                    </ul>
+                `;
+            } else {
+                level = "Novice en ISO 42001";
+                levelClass = "level-novice";
+                recommendations = `
+                    <h4><i class="fas fa-exclamation-triangle"></i> Courage, niveau Novice !</h4>
+                    <p>C'est un excellent point de départ pour apprendre. L'ISO 42001 peut sembler complexe au début, mais elle est très logique une fois comprise.</p>
+                    <h5><i class="fas fa-route"></i> Feuille de route :</h5>
+                    <ul>
+                        <li><i class="fas fa-book-open"></i> Commencez par les fondamentaux : principes et structure de la norme.</li>
+                        <li><i class="fas fa-globe"></i> Explorez des ressources introductives sur les systèmes de management.</li>
+                        <li><i class="fas fa-question"></i> Cherchez des définitions pour chaque terme inconnu.</li>
+                        <li><i class="fas fa-users-class"></i> Envisagez de suivre une formation avec un instructeur expérimenté.</li>
+                    </ul>
+                `;
+            }
+
+            return { level, levelClass, recommendations };
+        }
+
+        function showFinalResults() {
+            clearInterval(timerInterval); // Ensure timer is stopped
+            nextBtn.classList.add('d-none');
+            finishBtn.classList.add('d-none'); // Hide finish button too
+
+            const percentage = (score / questions.length) * 100;
+            const { level, levelClass, recommendations } = determineLevelAndRecommendations(percentage);
+
+            finalScoreCorrectEl.textContent = score;
+            finalScoreTotalEl.textContent = questions.length;
+            finalScorePercentageEl.textContent = `${percentage.toFixed(0)}%`;
+            finalScorePercentageEl.style.color = getScoreColor(percentage); // Set color based on score
+            
+            levelBadgeEl.textContent = level;
+            levelBadgeEl.className = `level-badge ${levelClass}`; // Apply level specific class
+            finalRecommendationsEl.innerHTML = recommendations;
+
+            resultsModal.show();
+        }
+
+        function getScoreColor(percentage) {
+            if (percentage >= 90) return 'var(--success-green)';
+            if (percentage >= 70) return 'var(--secondary-blue)';
+            if (percentage >= 50) return 'var(--accent-orange)';
+            if (percentage >= 25) return '#e67e22'; /* Carrot orange */
+            return 'var(--danger-red)';
+        }
+
+        // Event Listeners
+        nextBtn.addEventListener('click', handleNext);
+        finishBtn.addEventListener('click', showFinalResults);
+        restartQuizBtn.addEventListener('click', () => {
+            resultsModal.hide();
+            setTimeout(startQuiz, 500); // Small delay for modal to close
+        });
+        
+        // Initial call
+        document.addEventListener('DOMContentLoaded', startQuiz);
+    </script>
+</body>
+</html>
