@@ -1123,6 +1123,7 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
   <script>
     // Simulation states
     let simulationState = {
@@ -1205,171 +1206,340 @@
       }
     ];
 
+    // Contenu détaillé pour chaque section
+    const contentDatabase = {
+      // Introduction
+      'intro-contexte': {
+        title: 'Contexte de la norme ISO/IEC 42001',
+        content: `
+          <p>L'ISO/IEC 42001 a été développée en réponse aux préoccupations croissantes concernant :</p>
+          <ul>
+            <li>L'utilisation responsable de l'IA</li>
+            <li>La nécessité de cadres de gouvernance</li>
+            <li>L'harmonisation des approches internationales</li>
+            <li>La conformité aux régulations émergentes</li>
+          </ul>
+          <h5 class="mt-3">Historique :</h5>
+          <p>Développée par le comité technique conjoint ISO/IEC JTC 1/SC 42 sur l'IA, la norme a été publiée en décembre 2023 après 3 ans de travaux.</p>
+          <div class="alert alert-info mt-3">
+            <p><strong>Note :</strong> Cette norme s'inscrit dans une série de standards sur l'IA développés par l'ISO/IEC.</p>
+          </div>
+        `
+      },
+      'liens-normes': {
+        title: 'Relations avec autres normes',
+        content: `
+          <h5>Articulation avec le cadre normatif IA :</h5>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card mb-3">
+                <div class="card-header bg-primary text-white">
+                  <h6>Normes fondamentales</h6>
+                </div>
+                <div class="card-body">
+                  <ul>
+                    <li><strong>ISO/IEC 22989</strong> - Concepts et terminologie IA</li>
+                    <li><strong>ISO/IEC 23053</strong> - Cadre pour le machine learning</li>
+                    <li><strong>ISO/IEC 23894</strong> - Gestion des risques IA</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card mb-3">
+                <div class="card-header bg-primary text-white">
+                  <h6>Normes sectorielles</h6>
+                </div>
+                <div class="card-body">
+                  <ul>
+                    <li><strong>ISO/TR 24028</strong> - Aspects de confiance dans l'IA</li>
+                    <li><strong>ISO/IEC 38507</strong> - Gouvernance des TI</li>
+                    <li><strong>ISO/IEC 5338</strong> - Cycle de vie de l'IA</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="alert alert-info mt-3">
+            <p>L'ISO/IEC 42001 intègre les exigences de ces normes dans un cadre de management unifié.</p>
+          </div>
+        `
+      },
+      
+      // La Norme
+      'composants-smia': {
+        title: 'Composants détaillés du SMIA',
+        content: `
+          <h5>Exigences principales du système de management de l'IA :</h5>
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th>Composant</th>
+                <th>Exigences</th>
+                <th>Exemples</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Contexte</td>
+                <td>Comprendre l'environnement interne/externe</td>
+                <td>Analyse PESTEL, SWOT</td>
+              </tr>
+              <tr>
+                <td>Leadership</td>
+                <td>Engagement de la direction, politique IA</td>
+                <td>Nomination d'un responsable SMIA</td>
+              </tr>
+              <tr>
+                <td>Planification</td>
+                <td>Identifier risques et opportunités</td>
+                <td>Registre des risques IA</td>
+              </tr>
+              <tr>
+                <td>Support</td>
+                <td>Ressources, compétences, sensibilisation</td>
+                <td>Formations sur l'éthique IA</td>
+              </tr>
+              <tr>
+                <td>Opérations</td>
+                <td>Contrôles spécifiques à l'IA</td>
+                <td>Tests de biais, documentation</td>
+              </tr>
+            </tbody>
+          </table>
+        `
+      },
+      'risques-ia': {
+        title: 'Méthodologie de gestion des risques IA',
+        content: `
+          <p>Approche spécifique pour les risques liés à l'IA :</p>
+          <div class="process-step">
+            <h5>1. Identification des risques</h5>
+            <p>Techniques : brainstorming, analyse de scénarios, revue documentaire</p>
+            <p><strong>Risques typiques :</strong> biais algorithmiques, fuites de données, erreurs de prédiction, impacts sociétaux</p>
+          </div>
+          <div class="process-step">
+            <h5>2. Analyse des risques</h5>
+            <p>Évaluer la probabilité et l'impact selon une échelle définie</p>
+            <p><strong>Outils :</strong> Matrice risque/impact, arbres de défaillance</p>
+          </div>
+          <div class="process-step">
+            <h5>3. Évaluation des risques</h5>
+            <p>Comparer aux critères d'acceptation de l'organisation</p>
+            <p><strong>Seuils :</strong> Définir des niveaux d'acceptabilité</p>
+          </div>
+          <div class="process-step">
+            <h5>4. Traitement des risques</h5>
+            <p>Options : éviter, transférer, atténuer, accepter</p>
+            <p><strong>Contrôles :</strong> Techniques de mitigation spécifiques à l'IA</p>
+          </div>
+          <div class="alert alert-info mt-3">
+            <p><strong>Spécificité IA :</strong> Considérer les biais, l'explicabilité, l'impact sociétal, la sécurité des données.</p>
+          </div>
+        `
+      },
+      'transparence-ia': {
+        title: 'Techniques de transparence et explicabilité',
+        content: `
+          <h5>Méthodes pour répondre aux exigences de transparence :</h5>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card mb-3">
+                <div class="card-header bg-primary text-white">
+                  <h6>Documentation</h6>
+                </div>
+                <div class="card-body">
+                  <ul>
+                    <li>Fiches techniques des modèles</li>
+                    <li>Journal des décisions algorithmiques</li>
+                    <li>Description des données d'entraînement</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card mb-3">
+                <div class="card-header bg-primary text-white">
+                  <h6>Techniques techniques</h6>
+                </div>
+                <div class="card-body">
+                  <ul>
+                    <li>SHAP values</li>
+                    <li>LIME</li>
+                    <li>Cartes de caractéristiques</li>
+                    <li>Analyse des contre-factuels</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h5 class="mt-3">Exemple de fiche technique :</h5>
+          <table class="table table-sm">
+            <tr><th>Élément</th><th>Description</th></tr>
+            <tr><td>Objectif</td><td>Prédiction du risque crédit</td></tr>
+            <tr><td>Données</td><td>Historique financier anonymisé</td></tr>
+            <tr><td>Limitations</td><td>Ne couvre pas les startups</td></tr>
+            <tr><td>Performance</td><td>Précision: 87% ±2%</td></tr>
+          </table>
+        `
+      },
+      
+      // Certification
+      'avantages-certification': {
+        title: 'Avantages de la certification',
+        content: `
+          <h5>Étude de cas : Entreprise de reconnaissance d'images</h5>
+          <p><strong>Situation initiale :</strong> Difficultés à convaincre les clients de la fiabilité de ses solutions IA.</p>
+          <p><strong>Processus :</strong> Certification ISO/IEC 42001 en 8 mois.</p>
+          <p><strong>Résultats :</strong></p>
+          <ul>
+            <li>+40% de taux de conversion des prospects</li>
+            <li>Réduction des audits clients de 70%</li>
+            <li>Meilleure gestion des risques éthiques</li>
+            <li>Processus internes plus robustes</li>
+          </ul>
+          <h5 class="mt-3">Retour sur investissement :</h5>
+          <p>Coût de certification : 35 000€<br>
+          Gains estimés la première année : 120 000€</p>
+        `
+      },
+      'processus-audit': {
+        title: 'Checklist de préparation à l\'audit',
+        content: `
+          <h5>Documents à préparer :</h5>
+          <ul>
+            <li>Manuel du SMIA</li>
+            <li>Politique IA signée</li>
+            <li>Registre des risques et opportunités</li>
+            <li>Preuves d'évaluations des risques IA</li>
+            <li>Procédures documentées</li>
+            <li>Registre des compétences et formations</li>
+            <li>Preuves de surveillance et mesure</li>
+            <li>Résultats des audits internes</li>
+            <li>Registre des actions correctives</li>
+          </ul>
+          <h5 class="mt-3">Personnes à interviewer :</h5>
+          <ul>
+            <li>Direction générale</li>
+            <li>Responsable SMIA</li>
+            <li>Équipes techniques IA</li>
+            <li>Responsable conformité</li>
+            <li>Représentants des parties prenantes</li>
+          </ul>
+        `
+      },
+      
+      // Processus
+      'engagement-details': {
+        title: 'Exemple de politique IA',
+        content: `
+          <h5>Politique IA type conforme ISO/IEC 42001</h5>
+          <div class="alert alert-secondary">
+            <h6>Engagement de [Nom de l'organisation]</h6>
+            <p>Nous nous engageons à développer et utiliser des systèmes d'IA de manière responsable, éthique et conforme aux réglementations.</p>
+            
+            <h6 class="mt-3">Principes directeurs :</h6>
+            <ol>
+              <li>Respect des droits humains et des valeurs éthiques</li>
+              <li>Transparence et explicabilité des décisions</li>
+              <li>Gestion proactive des risques</li>
+              <li>Protection de la vie privée et des données</li>
+              <li>Amélioration continue</li>
+            </ol>
+            
+            <h6 class="mt-3">Responsabilités :</h6>
+            <p>La direction s'engage à fournir les ressources nécessaires. Tous les employés doivent adhérer à cette politique.</p>
+            
+            <p class="mt-3"><em>Signé : [Nom du PDG]</em></p>
+          </div>
+          <button class="btn btn-primary" onclick="downloadTemplate('politique-ia')">
+            <i class="bi bi-download"></i> Télécharger le modèle
+          </button>
+        `
+      },
+      'parties-prenantes-details': {
+        title: 'Matrice d\'analyse des parties prenantes',
+        content: `
+          <h5>Méthode d'identification et d'analyse</h5>
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th>Partie prenante</th>
+                <th>Intérêt</th>
+                <th>Influence</th>
+                <th>Exigences</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Clients finaux</td>
+                <td>Élevé</td>
+                <td>Moyen</td>
+                <td>Transparence, sécurité</td>
+              </tr>
+              <tr>
+                <td>Régulateurs</td>
+                <td>Élevé</td>
+                <td>Élevé</td>
+                <td>Conformité, documentation</td>
+              </tr>
+              <tr>
+                <td>Équipe technique</td>
+                <td>Élevé</td>
+                <td>Élevé</td>
+                <td>Outils, formation</td>
+              </tr>
+              <tr>
+                <td>Fournisseurs</td>
+                <td>Moyen</td>
+                <td>Moyen</td>
+                <td>Clarté des contrats</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <h5 class="mt-3">Outils d'engagement :</h5>
+          <ul>
+            <li>Enquêtes et interviews</li>
+            <li>Ateliers collaboratifs</li>
+            <li>Comités consultatifs</li>
+            <li>Mécanismes de feedback</li>
+          </ul>
+        `
+      }
+    };
+
     // Initialize the page
     document.addEventListener('DOMContentLoaded', function() {
       // Setup any initial functionality
     });
 
     function showDetails(type) {
-      let title = '';
-      let content = '';
-
-      switch(type) {
-        case 'intro-contexte':
-          title = 'Contexte de la norme ISO/IEC 42001';
-          content = `
-            <p>L'ISO/IEC 42001 a été développée en réponse aux préoccupations croissantes concernant :</p>
-            <ul>
-              <li>L'utilisation responsable de l'IA</li>
-              <li>La nécessité de cadres de gouvernance</li>
-              <li>L'harmonisation des approches internationales</li>
-              <li>La conformité aux régulations émergentes</li>
-            </ul>
-            <h5 class="mt-3">Historique :</h5>
-            <p>Développée par le comité technique conjoint ISO/IEC JTC 1/SC 42 sur l'IA, la norme a été publiée en décembre 2023 après 3 ans de travaux.</p>
-            <div class="alert alert-info mt-3">
-              <p><strong>Note :</strong> Cette norme s'inscrit dans une série de standards sur l'IA développés par l'ISO/IEC.</p>
-            </div>
-          `;
-          break;
-
-        case 'composants-smia':
-          title = 'Composants détaillés du SMIA';
-          content = `
-            <h5>Exigences principales du système de management de l'IA :</h5>
-            <table class="table table-sm">
-              <thead>
-                <tr>
-                  <th>Composant</th>
-                  <th>Exigences</th>
-                  <th>Exemples</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Contexte</td>
-                  <td>Comprendre l'environnement interne/externe</td>
-                  <td>Analyse PESTEL, SWOT</td>
-                </tr>
-                <tr>
-                  <td>Leadership</td>
-                  <td>Engagement de la direction, politique IA</td>
-                  <td>Nomination d'un responsable SMIA</td>
-                </tr>
-                <tr>
-                  <td>Planification</td>
-                  <td>Identifier risques et opportunités</td>
-                  <td>Registre des risques IA</td>
-                </tr>
-                <tr>
-                  <td>Support</td>
-                  <td>Ressources, compétences, sensibilisation</td>
-                  <td>Formations sur l'éthique IA</td>
-                </tr>
-                <tr>
-                  <td>Opérations</td>
-                  <td>Contrôles spécifiques à l'IA</td>
-                  <td>Tests de biais, documentation</td>
-                </tr>
-              </tbody>
-            </table>
-          `;
-          break;
-
-        case 'risques-ia':
-          title = 'Méthodologie de gestion des risques IA';
-          content = `
-            <p>Approche spécifique pour les risques liés à l'IA :</p>
-            <div class="process-step">
-              <h5>1. Identification des risques</h5>
-              <p>Techniques : brainstorming, analyse de scénarios, revue documentaire</p>
-            </div>
-            <div class="process-step">
-              <h5>2. Analyse des risques</h5>
-              <p>Évaluer la probabilité et l'impact selon une échelle définie</p>
-            </div>
-            <div class="process-step">
-              <h5>3. Évaluation des risques</h5>
-              <p>Comparer aux critères d'acceptation de l'organisation</p>
-            </div>
-            <div class="process-step">
-              <h5>4. Traitement des risques</h5>
-              <p>Options : éviter, transférer, atténuer, accepter</p>
-            </div>
-            <div class="alert alert-info mt-3">
-              <p><strong>Spécificité IA :</strong> Considérer les biais, l'explicabilité, l'impact sociétal, la sécurité des données.</p>
-            </div>
-          `;
-          break;
-
-        case 'avantages-certification':
-          title = 'Avantages de la certification';
-          content = `
-            <h5>Étude de cas : Entreprise de reconnaissance d'images</h5>
-            <p><strong>Situation initiale :</strong> Difficultés à convaincre les clients de la fiabilité de ses solutions IA.</p>
-            <p><strong>Processus :</strong> Certification ISO/IEC 42001 en 8 mois.</p>
-            <p><strong>Résultats :</strong></p>
-            <ul>
-              <li>+40% de taux de conversion des prospects</li>
-              <li>Réduction des audits clients de 70%</li>
-              <li>Meilleure gestion des risques éthiques</li>
-              <li>Processus internes plus robustes</li>
-            </ul>
-            <h5 class="mt-3">Retour sur investissement :</h5>
-            <p>Coût de certification : 35 000€<br>
-            Gains estimés la première année : 120 000€</p>
-          `;
-          break;
-
-        case 'processus-audit':
-          title = 'Checklist de préparation à l\'audit';
-          content = `
-            <h5>Documents à préparer :</h5>
-            <ul>
-              <li>Manuel du SMIA</li>
-              <li>Politique IA signée</li>
-              <li>Registre des risques et opportunités</li>
-              <li>Preuves d'évaluations des risques IA</li>
-              <li>Procédures documentées</li>
-              <li>Registre des compétences et formations</li>
-              <li>Preuves de surveillance et mesure</li>
-              <li>Résultats des audits internes</li>
-              <li>Registre des actions correctives</li>
-            </ul>
-            <h5 class="mt-3">Personnes à interviewer :</h5>
-            <ul>
-              <li>Direction générale</li>
-              <li>Responsable SMIA</li>
-              <li>Équipes techniques IA</li>
-              <li>Responsable conformité</li>
-              <li>Représentants des parties prenantes</li>
-            </ul>
-          `;
-          break;
-
-        default:
-          title = 'Détails non disponibles';
-          content = `
-            <div class="alert alert-warning">
-              <p>Les détails pour cette section ne sont pas encore disponibles.</p>
-              <p class="mb-0">Cette fonctionnalité est en cours de développement.</p>
-            </div>
-          `;
+      const content = contentDatabase[type];
+      
+      if (content) {
+        detailsModalTitle.textContent = content.title;
+        detailsModalContent.innerHTML = content.content;
+        detailsModal.show();
+      } else {
+        // Fallback for undefined content
+        detailsModalTitle.textContent = 'Contenu en développement';
+        detailsModalContent.innerHTML = `
+          <div class="alert alert-info">
+            <p>Cette section est en cours d'enrichissement.</p>
+            <p>Nous ajoutons continuellement du nouveau contenu pour couvrir tous les aspects de l'ISO/IEC 42001.</p>
+            <p class="mb-0">Revenez prochainement pour découvrir les mises à jour !</p>
+          </div>
+        `;
+        detailsModal.show();
       }
-
-      detailsModalTitle.textContent = title;
-      detailsModalContent.innerHTML = content;
-      detailsModal.show();
     }
 
     function showCaseStudy(caseId) {
-      let title = '';
-      let content = '';
-
-      switch(caseId) {
-        case 'finance':
-          title = 'Cas pratique : Secteur financier';
-          content = `
+      const caseStudies = {
+        'finance': {
+          title: 'Cas pratique : Secteur financier',
+          content: `
             <h5>Contexte :</h5>
             <p>Une fintech propose un système de scoring crédit basé sur l'IA pour les prêts aux PME. Suite à des plaintes sur des refus inexpliqués, l'entreprise souhaite obtenir la certification ISO/IEC 42001.</p>
             
@@ -1406,12 +1576,11 @@
               <li>Amélioration du taux d'acceptation des prêts de 15%</li>
               <li>Reconnaissance comme leader en IA responsable</li>
             </ul>
-          `;
-          break;
-
-        case 'sante':
-          title = 'Cas pratique : Secteur de la santé';
-          content = `
+          `
+        },
+        'sante': {
+          title: 'Cas pratique : Secteur de la santé',
+          content: `
             <h5>Contexte :</h5>
             <p>Un éditeur de logiciels médicaux développe un système d'aide au diagnostic des cancers de la peau. Avant la commercialisation en Europe, l'entreprise doit démontrer la conformité aux régulations et gagner la confiance des médecins.</p>
             
@@ -1448,54 +1617,104 @@
               <li>Adoption par 120 hôpitaux la première année</li>
               <li>Amélioration de 30% des diagnostics précoces</li>
             </ul>
-          `;
-          break;
-
-        default:
-          title = 'Cas pratique non trouvé';
-          content = `
-            <div class="alert alert-warning">
-              <p>Le cas pratique demandé n'est pas encore disponible dans notre base de données.</p>
-              <p class="mb-0">Nous travaillons à ajouter continuellement de nouveaux cas pratiques.</p>
+          `
+        },
+        'ecommerce': {
+          title: 'Cas pratique : Commerce électronique',
+          content: `
+            <h5>Contexte :</h5>
+            <p>Une plateforme e-commerce utilise l'IA pour des recommandations personnalisées et la détection de fraude. Suite à des inquiétudes sur l'utilisation des données, l'entreprise cherche à se certifier.</p>
+            
+            <h5 class="mt-3">Enjeux :</h5>
+            <ul>
+              <li>Transparence des algorithmes de recommandation</li>
+              <li>Consentement éclairé des utilisateurs</li>
+              <li>Minimisation des données collectées</li>
+              <li>Explication des décisions de fraude</li>
+            </ul>
+            
+            <h5 class="mt-3">Solutions implémentées :</h5>
+            <div class="process-step">
+              <h6>1. Interface utilisateur transparente</h6>
+              <p>Explication claire des recommandations avec option "Pourquoi ce choix ?"</p>
             </div>
-          `;
-      }
+            <div class="process-step">
+              <h6>2. Dashboard de contrôle</h6>
+              <p>Accès utilisateur aux données collectées et leur utilisation</p>
+            </div>
+            <div class="process-step">
+              <h6>3. Processus d'appel</h6>
+              <p>Mécanisme de contestation des décisions de fraude</p>
+            </div>
+            
+            <h5 class="mt-3">Résultats :</h5>
+            <ul>
+              <li>Certification obtenue en 6 mois</li>
+              <li>Augmentation de 25% de l'engagement utilisateur</li>
+              <li>Réduction des réclamations de 40%</li>
+              <li>Amélioration de la fidélisation client</li>
+            </ul>
+          `
+        }
+      };
 
-      detailsModalTitle.textContent = title;
-      detailsModalContent.innerHTML = content;
-      detailsModal.show();
+      const caseStudy = caseStudies[caseId];
+      
+      if (caseStudy) {
+        detailsModalTitle.textContent = caseStudy.title;
+        detailsModalContent.innerHTML = caseStudy.content;
+        detailsModal.show();
+      } else {
+        detailsModalTitle.textContent = 'Cas pratique à venir';
+        detailsModalContent.innerHTML = `
+          <div class="alert alert-info">
+            <p>Nous préparons actuellement de nouveaux cas pratiques sectoriels.</p>
+            <p>Cette section sera bientôt enrichie avec des exemples concrets supplémentaires.</p>
+            <p class="mb-0">Revenez régulièrement pour découvrir les nouvelles études de cas !</p>
+          </div>
+        `;
+        detailsModal.show();
+      }
+    }
+
+    function downloadTemplate(type) {
+      alert(`Fonctionnalité de téléchargement du template ${type} sera implémentée`);
+      // Implémentation réelle pourrait être :
+      // window.location.href = `/templates/${type}.docx`;
     }
 
     function simulateStep(step) {
-      switch (step) {
-        case 'engagement':
-          document.getElementById('engagementResult').style.display = 'block';
-          simulationState.engagement = true;
-          document.getElementById('partiesPrenantesBtn').disabled = false;
-          break;
-        case 'parties-prenantes':
-          document.getElementById('partiesPrenantesResult').style.display = 'block';
-          simulationState.partiesPrenantes = true;
-          document.getElementById('partiesPrenantesBtn').disabled = true;
-          document.getElementById('risquesBtn').disabled = false;
-          break;
-        case 'risques':
-          document.getElementById('risquesResult').style.display = 'block';
-          simulationState.risques = true;
-          document.getElementById('risquesBtn').disabled = true;
-          document.getElementById('controlesBtn').disabled = false;
-          break;
-        case 'controles':
-          document.getElementById('controlesResult').style.display = 'block';
-          simulationState.controles = true;
-          document.getElementById('controlesBtn').disabled = true;
-          document.getElementById('documentationBtn').disabled = false;
-          break;
-        case 'documentation':
-          document.getElementById('documentationResult').style.display = 'block';
-          simulationState.documentation = true;
-          document.getElementById('documentationBtn').disabled = true;
-          break;
+      const stepContents = {
+        'engagement': {
+          selector: '#engagementResult',
+          nextButton: '#partiesPrenantesBtn'
+        },
+        'parties-prenantes': {
+          selector: '#partiesPrenantesResult',
+          nextButton: '#risquesBtn'
+        },
+        'risques': {
+          selector: '#risquesResult',
+          nextButton: '#controlesBtn'
+        },
+        'controles': {
+          selector: '#controlesResult',
+          nextButton: '#documentationBtn'
+        },
+        'documentation': {
+          selector: '#documentationResult',
+          nextButton: null
+        }
+      };
+
+      const stepConfig = stepContents[step];
+      if (!stepConfig) return;
+
+      document.querySelector(stepConfig.selector).style.display = 'block';
+      simulationState[step] = true;
+      
+      if (stepConfig.nextButton) {
+        document.querySelector(stepConfig.nextButton).disabled = false;
       }
     }
 
@@ -1508,16 +1727,15 @@
         documentation: false
       };
 
-      document.getElementById('engagementResult').style.display = 'none';
-      document.getElementById('partiesPrenantesResult').style.display = 'none';
-      document.getElementById('risquesResult').style.display = 'none';
-      document.getElementById('controlesResult').style.display = 'none';
-      document.getElementById('documentationResult').style.display = 'none';
+      // Hide all results
+      document.querySelectorAll('.process-step div[id$="Result"]').forEach(el => {
+        el.style.display = 'none';
+      });
 
-      document.getElementById('partiesPrenantesBtn').disabled = true;
-      document.getElementById('risquesBtn').disabled = true;
-      document.getElementById('controlesBtn').disabled = true;
-      document.getElementById('documentationBtn').disabled = true;
+      // Disable all step buttons except the first
+      document.querySelectorAll('.process-step button:not(:first-child)').forEach(btn => {
+        btn.disabled = true;
+      });
     }
 
     // Quiz functions
@@ -1552,7 +1770,7 @@
         `;
       });
 
-      questionHTML += `</div><div id="questionExplanation" style="display: none;"></div>`;
+      questionHTML += `</div><div id="questionExplanation"></div>`;
       quizQuestions.innerHTML = questionHTML;
     }
 
@@ -1577,8 +1795,6 @@
           </div>
         `;
       }
-      
-      explanationDiv.style.display = 'block';
     }
 
     function nextQuestion() {
@@ -1614,10 +1830,14 @@
           <p>Votre score : ${score}/${questions.length} (${percentage}%)</p>
           <p>${message}</p>
         </div>
-        <button class="btn btn-primary" onclick="startQuiz()">Recommencer</button>
-        <button class="btn btn-secondary" onclick="quizModal.hide()">Fermer</button>
+        <div class="d-grid gap-2">
+          <button class="btn btn-primary" onclick="startQuiz()">Recommencer</button>
+          <button class="btn btn-outline-secondary" onclick="quizModal.hide()">Fermer</button>
+        </div>
       `;
     }
   </script>
+  
+  
 </body>
 </html>
